@@ -1,0 +1,35 @@
+.Logo-btn {
+  width: 100px;
+  height: 100px;
+}
+
+.Logo-btn:hover {
+  filter: brightness(0.7) contrast(1.2);
+}
+
+.Logo-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.CrashLogo-btn, 
+.CoinflipLogo-btn, 
+.SlotsLogo-btn {
+    width: 200px;
+    height: 200px;
+}
+
+.CrashLogo-btn:hover, 
+.CoinflipLogo-btn:hover, 
+.SlotsLogo-btn:hover {
+    filter: brightness(0.7) contrast(1.2);
+}
+
+.CrashLogo-btn img , .CoinflipLogo-btn img, .SlotsLogo-btn img{
+    width: 100%;
+   height: 100%;
+   border-radius: 30px;
+  object-fit: contain;
+  border: black solid 5px;
+}

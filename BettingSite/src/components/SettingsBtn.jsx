@@ -7,7 +7,6 @@ function SettingsBtn() {
     navigate("/settings");
   }
 
-
   return ( 
       <div className="setting-btn">
       <button className="btn" onClick={OnStettingClicked}>

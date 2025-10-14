@@ -1,12 +1,17 @@
+import RofusLogo from "./RofusLogo"
+import '../styles/Footer.css' 
+
 function Footer() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-      
+      <footer className="footer-container">
+      <div className="footer-copyright">
+        <p>Copyright © 2025 Cloud9Bet </p>
       </div>
-    </>
+      <div className="footer-rofuslogo">
+        <RofusLogo/>
+      </div>
+      </footer>
   )
 }
 

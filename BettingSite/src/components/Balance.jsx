@@ -1,12 +1,14 @@
+import '../styles/Balance.css'
+
 
 function Balance() {
-  const [count, setCount] = useState(false)
+//   const [BInput, setBinput] = useState("")
+
 
   return (
     <>
-      <div>
-        
-      
+      <div className="BalanceInput">
+        <p>Balance: 1000$</p>
       </div>
     </>
   )
