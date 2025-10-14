@@ -1,0 +1,16 @@
+.Loginpage-container,.SignUp-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+
+.Log-img-container {
+    width: 200px;
+}
+
+.Log-img {
+    width: 100%;
+    object-fit: contain;
+}

@@ -5,7 +5,7 @@ function HomeBtn() {
     const navigate = useNavigate();
   
   function OnHomeClicked() {
-    navigate("/");
+    navigate("/home");
   }
 
   return ( 
