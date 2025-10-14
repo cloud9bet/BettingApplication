@@ -10,7 +10,7 @@ function SettingsBtn() {
   return ( 
       <div className="setting-btn">
       <button className="btn" onClick={OnStettingClicked}>
-        👤
+        🌣
       </button>
       </div>
   )

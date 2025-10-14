@@ -1,23 +1,24 @@
-.footer-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;           
-  border: 1px solid black;
-  background-color: blueviolet;
-  color: wheat;
-  height: 50px;
-}
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-top: #293953 solid 2px;
+    background-color: #1a2434;
+    color: rgb(255, 255, 255);
+    height: 50px;
+  }
 
-.footer-copyright {
-    flex: 1;
-  text-align: left;
-  margin-left: 20px; 
-  margin-top: 15px;           
-}
+  .footer-copyright {
+    text-align: left;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-style: italic;
+    font-size: 0.8em;
+  }
 
-.footer-rofuslogo {
-    margin-top: 20px;
-  flex: 5;   
-    align-items: center;
-  margin-bottom: 10px;
-}
+  .footer-rofuslogo {
+    margin-top: 13px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+
+  }

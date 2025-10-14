@@ -13,11 +13,13 @@ function Header() {
       <div className="header-logo">
         <Logo />
       </div>
-      <div className="header-balance">
-        <Balance />
-      </div>
-      <div className="header-deposit">
-        <Deposit />
+      <div className="header-money-container">
+        <div className="header-balance">
+          <Balance />
+        </div>
+        <div className="header-deposit">
+          <Deposit />
+        </div>
       </div>
       <div className="header-nav">
         <div className="header-homeBtn">

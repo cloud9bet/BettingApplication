@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: black solid;
-    background-color: blueviolet;
+    border-bottom: #293953 solid 2px;
+    background-color: #1a2434;
     height: 100px;
 }
 
@@ -18,14 +18,20 @@
 
 
 .header-balance{
-    margin-top: 20px;
-    margin-right: 20px;
+    margin-top: 25px;
+    margin-left: 20px;
+
+
 }
 
 
 .header-deposit {
-    margin-top: 25px;
-    margin-right: 20px;
+    margin-top: 29px;
     width: 200px;
+}
 
+.header-money-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }

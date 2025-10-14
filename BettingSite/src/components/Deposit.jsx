@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import DepositInfo from "./DepositInfo"
+import '../styles/Deposit.css' 
+
 
 function Deposit() {
   const [deposit, setDeposit] = useState(false);

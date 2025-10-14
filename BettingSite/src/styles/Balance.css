@@ -5,14 +5,12 @@
   border-radius: 15px;
   height: 50px;                  
   width: 150px;                  
-  background-color: rgb(252, 252, 252);          
+  background-color: rgb(84, 175, 64);          
   box-sizing: border-box;
+  color: white;
 }
 .BalanceInput p {
     margin-top: 10px;
 }
 
-.BalanceInput:hover {
-    background-color: rgb(28, 239, 239);
-} 
 

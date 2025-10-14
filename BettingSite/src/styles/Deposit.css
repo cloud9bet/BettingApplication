@@ -1,0 +1,38 @@
+.DepositPress{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.Deposit-container{
+    display: flex;
+    flex-direction: row;
+    gap:10px
+}
+
+.ResetButton{
+    width: 50px;
+    border-radius: 15px;
+    border: transparent;
+    font-weight: bold;
+    color: white;
+    background-color: #2b3a54;
+}
+
+.ResetButton:hover {
+  background-color: #5159ed;
+}
+
+.DepositInput{
+    border-radius: 15px;
+    width: 100px;
+    text-align: center;
+    border: transparent;
+    background-color: #2b3a54;
+    color: white;
+}
+
+.DepositInput::placeholder {
+    color: white;
+    font-style: italic;
+}
