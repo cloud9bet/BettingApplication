@@ -1,5 +1,5 @@
 
-function Deposit() {
+function Balance() {
   const [count, setCount] = useState(false)
 
   return (
@@ -12,4 +12,4 @@ function Deposit() {
   )
 }
 
-export default Deposit
+export default Balance
