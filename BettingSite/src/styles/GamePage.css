@@ -8,3 +8,8 @@
     box-sizing: border-box;
 }
 
+.CoinFlipGamePage-game{
+     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

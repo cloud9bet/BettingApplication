@@ -1,5 +1,6 @@
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import CoinflipGame from "../components/CoinflipGame/gameComponents/coinflipGame"
 // importer spil
 import '../styles/GamePage.css'
 
@@ -11,7 +12,7 @@ function CoinflipGamePage() {
       <Header/>
       </div>
       <div className="CoinFlipGamePage-game">
-       
+        <CoinflipGame/>
       </div>
       <div>
         <Footer/>

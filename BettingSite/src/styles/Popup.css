@@ -34,8 +34,10 @@
     padding: 50px;
     border-radius: 20px;
     background-color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 
 }
+
 .DepositInput {
     border-radius: 15px;
     height: 40px;
@@ -44,6 +46,7 @@
     border: transparent;
     background-color: #2b3a54;
     color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .ResetButton {
@@ -53,7 +56,8 @@
     border: transparent;
     font-weight: bold;
     color: white;
-    background-color: #2b3a54
+    background-color: #2b3a54;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -66,6 +70,7 @@
     flex-direction: column;
     gap: 10px;
     z-index: 2;
+    
 }
 
 
@@ -83,7 +88,7 @@
     padding: 50px;
     border-radius: 20px;
     background-color: #1e293b;
-
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 }
 
 
@@ -95,8 +100,7 @@
     border: transparent;
     background-color: #2b3a54;
     color: white;
-
-
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -107,7 +111,8 @@
     border: transparent;
     font-weight: bold;
     color: white;
-    background-color: #2b3a54
+    background-color: #2b3a54;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .setLimit-btn:hover {
