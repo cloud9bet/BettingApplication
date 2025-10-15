@@ -9,22 +9,22 @@ function SignUpForm() {
     e.preventDefault();
     navigate('/');
   };
-
+// vi skal huske at tilføje krav til password
   return (
     <div className="SignUp-container">
       <h2>Sign-Up</h2>
       <form className="SignUpForm" onSubmit={handleSubmit}>
         <div className="SignUp-form-row">
           <label htmlFor="name">Username</label>
-          <input type="text" id="name" name="name" required />
+          <input type="text" id="name" name="name" placeholder="Enter name" required />
         </div>
         <div className="SignUp-form-row">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="password" placeholder="Enter password" required />
         </div>
         <div className="SignUp-form-row">
-          <label htmlFor="password">Repeat Password</label>
-          <input type="password" id="password" name="password" required />
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Repeat password" required />
         </div>
         <button type="submit">Sign up</button>
       </form>

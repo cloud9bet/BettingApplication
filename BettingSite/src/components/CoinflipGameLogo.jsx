@@ -7,7 +7,7 @@ function CoinflipGameLogo() {
     const navigate = useNavigate();
   
   function OnLogoClicked() {
-    navigate("/settings");
+    navigate("/Coinflip");
   }
 
   return ( 

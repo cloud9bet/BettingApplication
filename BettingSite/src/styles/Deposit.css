@@ -8,56 +8,18 @@
 
 }
 
-/* For Deposit Info*/
-.Deposit-container {
-    display: flex;
-    /* flex-direction: row; */
 
-    /*Nyt logik*/
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-    gap: 10px;
-    padding: 50px;
-    border-radius: 20px;
-    background-color: #1e293b;
-
-}
-
-.ResetButton {
-    width: 80px;
-    height: 40px;
-    border-radius: 15px;
-    border: transparent;
-    font-weight: bold;
-    color: white;
-    background-color: #2b3a54;
-
-
-}
 
 .ResetButton:hover {
     background-color: #5159ed;
 }
 
-.DepositInput {
-    border-radius: 15px;
-    height: 40px;
-    width: 150px;
-    text-align: center;
-    border: transparent;
-    background-color: #2b3a54;
-    color: white;
 
-
-}
 
 
 .DepositInput::placeholder {
     color: white;
     font-style: italic;
-
-
 }
 
 

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import '../styles/Deposit.css' 
+import '../styles/Popup.css' 
+
 
 
 function DepositInfo({ onClose }) {

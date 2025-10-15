@@ -7,7 +7,7 @@ function SlotsGameLogo() {
     const navigate = useNavigate();
   
   function OnLogoClicked() {
-    navigate("/settings");
+    navigate("/Slots");
   }
 
   return ( 

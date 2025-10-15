@@ -43,6 +43,10 @@
   margin-left: 30px;
 }
 
+.LoginForm input::placeholder, .SignUpForm input::placeholder{
+  color: black;
+  font-style: italic;
+}
 
 .LoginForm input{
   padding: 10px;

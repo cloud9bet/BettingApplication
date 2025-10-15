@@ -3,7 +3,6 @@ import Footer from "../components/Footer"
 import SlotsGameLogo from "../components/SlotsGameLogo"
 import CrashGameLogo from "../components/CrashGameLogo"
 import CoinflipGameLogo from "../components/CoinflipGameLogo"
-import LoginForm from "../components/LoginForm"
 import '../styles/HomePage.css'
 
 

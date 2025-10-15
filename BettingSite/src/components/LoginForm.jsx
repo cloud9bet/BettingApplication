@@ -16,12 +16,12 @@ function LoginForm() {
     <form className="LoginForm" onSubmit={handleSubmit}>
       <div className="Login-form-row">
         <label htmlFor="name">Username</label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="name" name="name" placeholder="Enter name" required />
       </div>
       
       <div className="Login-form-row">
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" required />
+        <input type="password" id="password" name="password" placeholder="Enter password" required />
       </div>      
         <button type="submit">Log in</button>
 

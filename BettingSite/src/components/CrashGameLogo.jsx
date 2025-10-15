@@ -7,7 +7,7 @@ function CrashGameLogo() {
     const navigate = useNavigate();
   
   function OnLogoClicked() {
-    navigate("/settings");
+    navigate("/Crash");
   }
 
   return ( 
