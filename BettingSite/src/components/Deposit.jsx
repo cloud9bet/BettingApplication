@@ -1,36 +1,35 @@
-import { useState, useRef, useEffect } from "react";
-import DepositInfo from "./DepositInfo"
-import '../styles/Deposit.css' 
+import { useState } from "react";
+import DepositInfo from "./DepositInfo";
+import "../styles/Deposit.css";
+import "../styles/Popup.css";
 
 
 function Deposit() {
   const [deposit, setDeposit] = useState(false);
-   const containerRef = useRef(null);
-  
 
-    function DepostClicked(){
-          setDeposit(prev => !prev);
+  function DepostClicked() {
+    setDeposit(true);;
+  }
+  function CloseDeposit() {
+    setDeposit(false);
   }
 
-    useEffect(() => {
-    function handleClickOutside(event) {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
-        setDeposit(false);
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
-      <div className="DepositPress" ref={containerRef}>
-        <button className="DepositButton"  onClick={DepostClicked}>Deposit</button>
-         {deposit && <DepositInfo />}
-      </div>
-  )
+    <div className="DepositPress">
+      <button className="DepositButton" onClick={DepostClicked}>
+        Deposit
+      </button>
+
+      {deposit && (
+        <div className="rootOverlay">
+          <div className="overlay" onClick={CloseDeposit}></div>
+          <div className="DepositPress">
+            <DepositInfo onClose={CloseDeposit} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default Deposit
+export default Deposit;

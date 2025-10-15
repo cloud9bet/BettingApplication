@@ -7,7 +7,7 @@ function Logo() {
     const navigate = useNavigate();
   
   function OnLogoClicked() {
-    navigate("/settings");
+    navigate("/home");
   }
 
   return ( 

@@ -1,38 +1,66 @@
-.DepositPress{
+.DepositPress {
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
+    /*Nyt logik*/
+    flex-direction: column;
     gap: 10px;
+    z-index: 2;
+
 }
 
-.Deposit-container{
+/* For Deposit Info*/
+.Deposit-container {
     display: flex;
-    flex-direction: row;
-    gap:10px
+    /* flex-direction: row; */
+
+    /*Nyt logik*/
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #1e293b;
+
 }
 
-.ResetButton{
-    width: 50px;
+.ResetButton {
+    width: 80px;
+    height: 40px;
     border-radius: 15px;
     border: transparent;
     font-weight: bold;
     color: white;
     background-color: #2b3a54;
+
+
 }
 
 .ResetButton:hover {
-  background-color: #5159ed;
+    background-color: #5159ed;
 }
 
-.DepositInput{
+.DepositInput {
     border-radius: 15px;
-    width: 100px;
+    height: 40px;
+    width: 150px;
     text-align: center;
     border: transparent;
     background-color: #2b3a54;
     color: white;
+
+
 }
+
 
 .DepositInput::placeholder {
     color: white;
     font-style: italic;
+
+
+}
+
+
+.DepositButton{
+    width: 100px;;
 }

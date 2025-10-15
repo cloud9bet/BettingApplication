@@ -1,16 +1,24 @@
-import SettingsBtn from "../components/SettingsBtn"
+import HeaderSettings from "../components/HeaderSettings"
+import Footer from "../components/Footer"
 
-function settingsPage() {
 
+
+function SettingsPage() {
 
   return (
-  <div>
-    <p>Hey from Settingspage</p>
+  <div className="Settingspage-container">
+      <div >
+      <HeaderSettings/>
+      </div>
+      <div className="Settingspage-container">
+        
+
+      </div>
       <div>
-    
+        <Footer/>
       </div>
   </div>
   )
 }
 
-export default settingsPage
+export default SettingsPage

@@ -7,24 +7,30 @@ function SignUpForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-      navigate('/'); 
+    navigate('/');
   };
 
   return (
-  <div className="SignUp-container">
-    <h2>Sign-Up</h2>
-    <form className="SignUpForm" onSubmit={handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input type="text" id="name" name="name" required /><br />
-      <label htmlFor="password">Password</label>
-      <input type="password" id="password" name="password" required /><br />
-      <div className="Login-btn">
+    <div className="SignUp-container">
+      <h2>Sign-Up</h2>
+      <form className="SignUpForm" onSubmit={handleSubmit}>
+        <div className="SignUp-form-row">
+          <label htmlFor="name">Username</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div className="SignUp-form-row">
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div className="SignUp-form-row">
+          <label htmlFor="password">Repeat Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
         <button type="submit">Sign up</button>
-      </div>
-    </form>
-    <p>Have an account? <Link className="SignUp-redirect" to="/">Login here</Link></p>
-  </div>
-)
+      </form>
+      <p>Have an account? <Link className="SignUp-redirect" to="/">Login here</Link></p>
+    </div>
+  )
 }
 
 export default SignUpForm
