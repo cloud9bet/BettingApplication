@@ -13,6 +13,11 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 
 }
+.placeBet-container{
+    display: flex;
+    flex-direction:row;
+    gap: 10px;
+}
 
 .game-input {
     display: flex;
@@ -24,14 +29,14 @@
     border-radius: 30px;
     /* border: black solid 2px; */
     align-items: center;
-
+margin-top: 10px;
     justify-content: center;
     gap: 10px;
 }
 
 #session,
 #balance {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: bold;
     color: white;
 }
@@ -63,17 +68,51 @@
 
 }
 
-.game-input button {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+.Coin-btns {
+  display: flex;
+  flex-direction: row;
+  /* border: 2px solid red; Tilføj border-style og border-width */
+  width: 250px;
+  height: 100px;
+  gap: 10px; 
+  justify-content: center; 
+  align-items: center; 
 }
 
-.game-input button:hover {
-    background-color: goldenrod;
+.Coin-btns button {
+  background-color: #68756E;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  height: 40px; /* Juster højden */
+  width: 75px;
+  font-size: 15px;
+}
+
+.Coin-btns button:hover {
+  filter: brightness(0.7) contrast(1.2);
+}
+
+.selected{
+  filter: brightness(0.7) contrast(1.2);
+    cursor: not-allowed;
+
+}
+
+
+
+.spin-btn:hover {
+    background-color: #806B80;
+    filter: brightness(0.7) contrast(1.2);
+
+}
+
+.spin-btn {
+    background-color:#806B80 ;
 }
 
 .button-disabled {
-    background-color: goldenrod;
-
+      filter: brightness(0.7) contrast(1.2);
     cursor: not-allowed;
 }
 
@@ -103,7 +142,9 @@
 .heads img, .tails img {
     width: 250px;
     height: 250px;
-} 
+}
+
+
 
 .heads,
 .tails {

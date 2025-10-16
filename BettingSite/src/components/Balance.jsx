@@ -1,14 +1,16 @@
+import { useUserBalance } from '../Context/BalanceContext';
 import '../styles/Balance.css'
-
+import { useState } from "react";
 
 function Balance() {
-//   const [BInput, setBinput] = useState("")
+  const { totalBalance, setTotalBalance } = useUserBalance();
+
 
 
   return (
     <>
       <div className="BalanceInput">
-        <p>Balance: 1000$</p>
+        <p>Balance: {totalBalance} $</p>
       </div>
     </>
   )

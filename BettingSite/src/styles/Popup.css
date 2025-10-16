@@ -63,14 +63,14 @@
 
 
 
-.Settingspage-limit-popup{
+.Settingspage-limit-popup {
     display: flex;
     /* flex-direction: row; */
     /*Nyt logik*/
     flex-direction: column;
     gap: 10px;
     z-index: 2;
-    
+
 }
 
 
@@ -127,7 +127,7 @@
 
 
 
-.Settingspage-history-popup{
+.Settingspage-history-popup {
     /* display: flex;
 
     flex-direction: column;
@@ -137,12 +137,14 @@
     flex-direction: column;
     gap: 10px;
     z-index: 2;
-    max-height: 80vh; /* Maksimal højde på 80% af viewport */
-    width: 400px; /* Fast bredde */
-    
+    max-height: 80vh;
+    /* Maksimal højde på 80% af viewport */
+    width: 400px;
+    /* Fast bredde */
+
 }
 
-.History-container{
+.History-container {
 
     display: flex;
     flex-direction: column;
@@ -153,7 +155,8 @@
     border-radius: 20px;
     background-color: #1e293b;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
-    max-height: 100%; /* Maksimal højde */
+    max-height: 100%;
+    /* Maksimal højde */
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
@@ -162,8 +165,10 @@
 /* Transaktionsliste som er scrollbar */
 .transactions-list {
     width: 100%;
-    max-height: 400px; /* Juster efter behov */
-    overflow-y: auto; /* Scrollbar inde i boksen */
+    max-height: 400px;
+    /* Juster efter behov */
+    overflow-y: auto;
+    /* Scrollbar inde i boksen */
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -179,38 +184,52 @@
 }
 
 
+.History-btn-container {
+    display: flex;
+    flex-direction: row;
+    width: 50px;
+    height: 50px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+    margin-bottom: 10px;
+}
 
- .CloseHistory-btn {
-    margin-left: 150px;
-    width: 5px;
-    height: 30px;
+.CloseHistory-btn {
+    width: 50px;
+    height: 20px;  
     border-radius: 10px;
     border: transparent;
     font-weight: bold;
     color: white;
-    background-color: #2b3a54;
+    background-color: tomato;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-} 
+}
 
 
 
-.CloseHistory-btn:hover{
-    background-color: #5159ed;
 
+
+.CloseHistory-btn:hover {
+    background-color: tomato;
+
+    filter: brightness(0.7) contrast(1.2);
 }
 
 .positive {
-  color: lightgreen;
+    color: lightgreen;
     font-weight: bold;
 
 }
 
 .negative {
-  color: tomato;
+    color: tomato;
     font-weight: bold;
 
 }
-.History-container h2{
+
+.History-container h2 {
     color: white
 }
 

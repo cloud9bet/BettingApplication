@@ -22,7 +22,9 @@ function History({ onClose }) {
 
     return (
         <div className="History-container">
+            <div className="History-btn-container">
             <button className="CloseHistory-btn" onClick={HistoryCloseClicked}>x</button>
+            </div>
             <div className="transactions-list">
                 {transactions.map((t, index) => (
                     <div key={index} className="transaction">
