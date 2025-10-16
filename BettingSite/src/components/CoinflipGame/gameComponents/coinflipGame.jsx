@@ -31,8 +31,8 @@ function CoinflipGame() {
       (choice === "head" && flipResult) ||
       (choice === "tail" && !flipResult)
     ) {
-      setBalance((prev) => prev + bet * 2);
-      setTotalBalance((prev) => prev + bet * 2);
+      setBalance((prev) => prev + bet);
+      setTotalBalance((prev) => prev + bet);
     } else {
       setBalance((prev) => prev - bet);
       setTotalBalance((prev) => prev - bet);
