@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 import HeaderSettings from "../components/HeaderSettings"
 import Footer from "../components/Footer"
 import Limit from "../components/Limit"
-// import History from "../components/History"
+import History from "../components/History"
 import '../styles/Settings.css'
 import '../styles/PopUp.css'
 
@@ -44,12 +44,12 @@ function SettingsPage() {
           Set Deposit Limit
         </button>
 
-        {/* {history && (
+        {history && (
           <div className="rootOverlay">
             <div className="overlay" onClick={onCloseClicked}></div>
             <div className="Settingspage-history-popup">
               <History onClose={onCloseClicked} /> </div>
-          </div>)} */}
+          </div>)}
 
         <button onClick={onHistoryClicked}>
           History
