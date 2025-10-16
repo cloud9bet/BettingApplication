@@ -1,19 +1,16 @@
-import { useState } from 'react';
-import '../gameStyles/mainStyles.css';
-import headImg from '../images/heads_monopoly.png';
-import tailImg from '../images/tails_monopoly.png';
-import { useUserBalance } from '../../../Context/BalanceContext';
+import { useState } from "react";
+import "../gameStyles/mainStyles.css";
+import { useUserBalance } from "../../../Context/BalanceContext";
+import Coin from "./coin";
 
 function CoinflipGame() {
-  const {totalBalance, setTotalBalance } = useUserBalance();
+  const { totalBalance, setTotalBalance } = useUserBalance();
   const [anim, setAnim] = useState("");
   const [balance, setBalance] = useState(0);
   const [choice, setChoice] = useState("");
   const [bet, setBet] = useState(0);
   const [currentSide, setCurrentSide] = useState("heads");
   const [flipResult, setFlipResult] = useState(null);
-
-
 
   const flipCoin = () => {
     if (anim || !choice || bet <= 0) return; // forhindrer ugyldige spins
@@ -30,14 +27,16 @@ function CoinflipGame() {
     setBet(0);
 
     // først her — når animationen er færdig — opdaterer vi balancen
-    if ((choice === "head" && flipResult) || (choice === "tail" && !flipResult)) {
-      setBalance(prev => prev + bet * 1.5);
-      setTotalBalance(prev => prev + bet * 1.5)
+    if (
+      (choice === "head" && flipResult) ||
+      (choice === "tail" && !flipResult)
+    ) {
+      setBalance((prev) => prev + bet * 2);
+      setTotalBalance((prev) => prev + bet * 2);
     } else {
-      setBalance(prev => prev - bet);
-      setTotalBalance(prev => prev - bet)
+      setBalance((prev) => prev - bet);
+      setTotalBalance((prev) => prev - bet);
     }
-
   };
 
   function OnHeadClicked() {
@@ -51,20 +50,36 @@ function CoinflipGame() {
   return (
     <div className="game-container">
       <div className="game-input">
-        <label htmlFor="Session Balance" id="session">Session Balance</label>
-        <label htmlFor="Amount" id="balance">{balance}$</label>
+        <label htmlFor="Session Balance" id="session">
+          Session Balance
+        </label>
+        <label htmlFor="Amount" id="balance" className={balance >= 0 ? "positiv" : "negativ"}>
+          {balance}$
+        </label>
 
         <div className="Coin-btns">
-          <button className={choice === "head" ? "selected" : ""} onClick={OnHeadClicked}>
+          <button
+            className={choice === "head" ? "selected" : ""}
+            onClick={OnHeadClicked}
+          >
             Head
           </button>
-          <button className={choice === "tail" ? "selected" : ""} onClick={OnTailClicked}>
+          <button
+            className={choice === "tail" ? "selected" : ""}
+            onClick={OnTailClicked}
+          >
             Tail
           </button>
         </div>
 
         <div className="placeBet-container">
-          <button className={`spin-btn ${anim ? "button-disabled" : "button-enable"}`} onClick={flipCoin} disabled={!!anim}>Spin</button>
+          <button
+            className={`spin-btn ${anim ? "button-disabled" : "button-enable"}`}
+            onClick={flipCoin}
+            disabled={!!anim}
+            >
+            Spin
+          </button>
           <input
             type="text"
             value={bet}
@@ -73,22 +88,17 @@ function CoinflipGame() {
               if (newBet <= totalBalance) {
                 setBet(newBet);
               }
-
             }}
           />
         </div>
       </div>
 
       <div className="game-action">
-        <div className={`coin ${anim} ${!anim ? currentSide + '-result' : ''}`} onAnimationEnd={handleAnimationEnd}>
-
-          <div className="heads">
-            <img src={headImg} alt="head" />
-          </div>
-          <div className="tails">
-            <img src={tailImg} alt="tail" />
-          </div>
-        </div>
+        <Coin
+          onAnimationEnd={handleAnimationEnd}
+          anim={anim}
+          currentSide={currentSide}
+        />
       </div>
     </div>
   );

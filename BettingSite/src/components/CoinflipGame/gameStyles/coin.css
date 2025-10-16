@@ -1,0 +1,79 @@
+
+.coin {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.heads img, .tails img {
+    width: 250px;
+    height: 250px;
+}
+
+
+
+.heads,
+.tails {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+
+.tails {
+    transform: rotateX(180deg);
+}
+
+.spin-heads {
+    animation: spin-heads 3s forwards;
+}
+
+.spin-tails {
+    animation: spin-tails 3s forwards;
+}
+
+
+@keyframes spin-heads {
+    0% {
+        transform: rotateX(0);
+    }
+    
+    100% {
+        transform: rotateX(2160deg);
+    }
+}
+
+@keyframes spin-tails {
+    0% {
+        transform: rotateX(0);
+    }
+
+    100% {
+        transform: rotateX(1980deg);
+    }
+}
+
+/* Når mønten viser heads efter animation */
+.coin.heads-result .heads {
+  transform: rotateX(0deg);
+  opacity: 1;
+}
+
+.coin.heads-result .tails {
+  transform: rotateX(180deg);
+  opacity: 0;
+}
+
+/* Når mønten viser tails efter animation */
+.coin.tails-result .heads {
+  transform: rotateX(0deg);
+  opacity: 0;
+}
+
+.coin.tails-result .tails {
+  transform: rotateX(0deg);
+  opacity: 1;
+}
