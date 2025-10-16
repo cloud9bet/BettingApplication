@@ -4,7 +4,9 @@
     justify-content: space-between;
     border-bottom: #293953 solid 2px;
     background-color: #1a2434;
-    height: 100px;
+    padding: 10px 15px;
+    min-height: 70px;
+  
 }
 
 .header-nav {
@@ -13,25 +15,47 @@
     gap: 10px;
     margin-top: 30px;
     margin-right: 20px;
+    /* flex-wrap: wrap; */
 }
-
-
 
 .header-balance{
     margin-top: 25px;
     margin-left: 20px;
-
-
 }
 
 
 .header-deposit {
     margin-top: 29px;
     width: 200px;
+    /* border: #0062ff solid 2px; */
 }
 
 .header-money-container{
     display: flex;
     flex-direction: row;
+    /* flex-wrap: wrap; */
     gap: 20px;
+}
+
+@media (max-width: 600px) {
+.header-money-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: #0062ff solid 2px;    */
+    gap: 10px;
+}
+
+.header-balance{
+    margin: auto;
+}
+
+
+.header-deposit {
+    margin:auto;
+    width: auto;
+    /* border: #0062ff solid 2px;    */
+}
+
 }

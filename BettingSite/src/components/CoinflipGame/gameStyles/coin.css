@@ -1,6 +1,8 @@
 
 .coin {
-    width: 250px;
+    width: 40vw;
+    max-width: 250px;
+    aspect-ratio: 1/1;
     height: 250px;
     position: relative;
     transform-style: preserve-3d;
@@ -8,10 +10,10 @@
 }
 
 .heads img, .tails img {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
-
 
 
 .heads,
@@ -76,4 +78,10 @@
 .coin.tails-result .tails {
   transform: rotateX(0deg);
   opacity: 1;
+}
+
+@media (max-width: 600px){
+    .coin{
+        width: 40vw;
+    }
 }

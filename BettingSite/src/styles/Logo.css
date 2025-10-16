@@ -1,6 +1,8 @@
 .Logo-btn {
-  width: 100px;
-  height: 100px;
+   width: 45vw; 
+  height: 45vw;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .Logo-btn:hover {
@@ -13,11 +15,17 @@
   object-fit: contain;
 }
 
+.RofusLogo-btn img {
+  width: 100px;     
+}
+
 .CrashLogo-btn, 
 .CoinflipLogo-btn, 
 .SlotsLogo-btn {
-    width: 200px;
-    height: 200px;
+  width: 45vw; 
+  height: 45vw; 
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .CrashLogo-btn:hover, 

@@ -1,15 +1,17 @@
 .CoinFlipGamePage-container, .CrashGamePage-container, .SlotsGamePage-container{
-    width: 100vw;           
-    height: 100vh;
+    width: 100%;           
+    min-height: 100vh;
     display: flex;       
     flex-direction: column;
-    overflow: hidden;  
+    /* overflow: hidden;   */
     justify-content: space-between;
     box-sizing: border-box;
+    
 }
 
 .CoinFlipGamePage-game{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
 }

@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import RofusImg from '../Images/Rofus.png';
+import '../styles/Logo.css'
+
 
 function RofusLogo() {
     const navigate = useNavigate();
