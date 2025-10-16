@@ -35,7 +35,7 @@ function CoinflipGame() {
       setTotalBalance(prev => prev + bet * 1.5)
     } else {
       setBalance(prev => prev - bet);
-      setTotalBalance(prev => prev + bet * 1.5)
+      setTotalBalance(prev => prev - bet)
     }
 
   };
