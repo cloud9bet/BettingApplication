@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom"
-import '../styles/Forms.css'
+import '../styles/Login.css'
 
 
 function LoginForm() {
