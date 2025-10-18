@@ -5,7 +5,7 @@ import SignUpPage from "./pages/SignUpPage"
 import CoinflipGamePage from "./pages/CoinflipGamePage"
 import CrashGamePage from "./pages/CrashGamePage"
 import SlotsGamePage from "./pages/SlotsGamePage"
-import {Routes, Route} from "react-router-dom"
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from './pages/LoginPage'
 
 function App() {
