@@ -33,7 +33,7 @@ function CoinflipGame() {
 
   const handleAnimationEnd = () => {
     setAnim("");
-    setBet(0);
+    //setBet(0);
 
     // først her — når animationen er færdig — opdaterer vi balancen
     if (
