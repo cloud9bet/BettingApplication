@@ -132,9 +132,15 @@ function GamblingCrash() {
               <input
                 type="text"
                 value={bet}
-                onChange={(e) => setBet(Number(e.target.value))}
                 disabled={isPlaying}
                 className="bet-input"
+                onChange={(e) => {
+                  const newBet = Number(e.target.value);
+                  if(newBet <= totalBalance) 
+                  {
+                    setBet(newBet);
+                  }
+                }}
               />
             </div>
 
