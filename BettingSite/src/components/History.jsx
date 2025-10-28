@@ -20,6 +20,8 @@ function History({ onClose }) {
         onClose();
     }
 
+    
+
     return (
         <div className="History-container">
             <div className="History-btn-container">

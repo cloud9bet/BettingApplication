@@ -95,14 +95,14 @@
 }
 
 #session,
-#balance, .stat-card, .bet-row, #control-row 
+.crash-container #balance, .stat-card, .bet-row, #control-row 
 {
   font-size: 18px;
   font-weight: bold;
   color: white;
 }
 
-#balance, .stat-card 
+.crash-container #balance, .stat-card 
 {
   margin-bottom: 20px;
   border-radius: 10px;
