@@ -22,7 +22,7 @@ function CoinflipGame() {
   let lossSound = new Audio(lossMP3);
 
   const flipCoin = () => {
-    if (anim || !choice || bet <= 0) return; // forhindrer ugyldige spins
+    if (anim || !choice || bet <= 0 || bet > totalBalance ) return; // forhindrer ugyldige spins 
 
     const isHeads = Math.random() > 0.5;
     const newSide = isHeads ? "spin-heads" : "spin-tails";
@@ -33,7 +33,9 @@ function CoinflipGame() {
 
   const handleAnimationEnd = () => {
     setAnim("");
-    //setBet(0);
+    // setBet(0);
+    
+
 
     // først her — når animationen er færdig — opdaterer vi balancen
     if (
