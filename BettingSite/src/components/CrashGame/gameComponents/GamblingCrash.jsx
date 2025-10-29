@@ -104,11 +104,6 @@ function GamblingCrash() {
   return (
     <div className="CrashGamePage-container">
       <div className="crash-container">
-        <div className="reset-row">
-          <button onClick={() => setBalance(1000)} className="btn-reset">
-            Reset Balance
-          </button>
-        </div>
 
         <div className="crash-main">
           <div className="crash-stats">
