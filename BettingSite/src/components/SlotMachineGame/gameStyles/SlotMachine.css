@@ -1,134 +1,105 @@
-
+/* Container forbliver centreret */
 .slot-machine-container {
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  width: 90vw;
-    max-width: 850px;
-  height: 350px; /* Reducer højden */
-  overflow: visible;
-  margin: 0 auto; /* Øg den negative margin */
-padding-top: 20px; /* Tilføj lidt top-padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 20px;
 }
 
+/* Selve maskinen – responsiv, ingen fixed højde */
 .slot-machine.big {
-position: relative;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-box-sizing: border-box;
-
-width: 850px;
-max-width: 850px;
-height: 400px;
-
-background-image: url("../Images/image.png");
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-
-border-radius: 16px;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
-text-align: center;
-color: #fff;
-font-family: inherit;
-overflow: hidden;
-
-/* overgang for glat skalering */
-transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 16 / 7;
+    background-image: url("../Images/image.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+    padding: 2rem;
+    color: #fff;
+    text-align: left;
 }
 
-/* === INDHOLD === */
-.info {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: flex-start; /* mod venstre i containeren */
-  position: relative;
-  top: -25px;
-  left: 0; /* fjern -225px */
-  width: 100%; /* så det fylder hele containerens bredde */
-  padding-left: 2rem; /* lidt luft fra kanten */
-  font-weight: bold;
-}
-
+/* REELS øverst */
 .grid {
-display: flex;
-gap: 0.6rem;
-justify-content: flex-start;
-align-items: flex-start;
-margin-top: -260px;
-margin-left: -540px;
-margin-bottom: 3rem;
+    order: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: clamp(6px, 1.2vw, 12px);
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    padding-left: 5%;
+    margin-top: clamp(6px, 1vh, 20px);
 }
 
+/* INFO under reels */
+.info {
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(8px, 1.5vw, 16px);
+    width: 100%;
+    padding-left: 5%;
+    margin-top: clamp(-0.8rem, -3vh, 1rem);
+    font-weight: bold;
+}
 
 .message {
-margin-top: 0.75rem;
-font-size: 1.1rem;
-color: #cbd5e1;
-left: 6.5%;
-top: 260px;
-position: absolute;
-font-weight: bold;
-}
-
-.reel.col {
-flex-shrink: 0;
-
+    order: 3;
+    position: relative;
+    align-self: flex-start;
+    margin-left: 5%;
+    margin-top: 1rem;
+    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+    color: #cbd5e1;
+    font-weight: bold;
 }
 
 
-/* === SKALERING – kun selve boksen ændrer størrelse === */
-@media (max-width: 1200px) {
-.slot-machine.big {
-transform: scale(0.9);
-}
-}
 
-@media (max-width: 992px) {
-.slot-machine.big {
-transform: scale(0.8);
-}
-}
+/* Responsive tweaks */
+@media (max-width: 900px) {
+    .slot-machine.big {
+        padding: 1.5rem;
+    }
 
-@media (max-width: 768px) {
-.slot-machine.big {
-transform: scale(0.7);
-}
+    .info,
+    .message {
+        flex-wrap: wrap;
+        gap: clamp(6px, 1.2vw, 12px);
+    }
 }
 
 @media (max-width: 600px) {
-.slot-machine.big {
-transform: scale(0.6);
-}
+    .slot-machine.big {
+        aspect-ratio: 4 / 3;
+        padding: 1rem;
+    }
+
+    .grid,
+    .message,
+    .info {
+        padding-left: 4%;
+    }
 }
 
-@media (max-width: 500px) {
-.slot-machine.big {
-transform: scale(0.55);
-}
-}
-
-@media (max-width: 400px) {
-.slot-machine.big {
-transform: scale(0.5);
-}
-}
-
-/* Landscape mobile */
-@media (max-height: 500px) and (orientation: landscape) {
-.slot-machine.big {
-transform: scale(0.6);
-}
-}
+/* dine balance/bet styles kan bevares som før */
 
 
-/* Tilføj til din eksisterende SlotMachine.css */
-
-
+/* === BALANCE OG BET === */
 .balance-label {
     font-weight: 600;
     color: #ffffff;
@@ -146,31 +117,19 @@ transform: scale(0.6);
     border: black solid 2px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
     height: 30px;
-
     padding: 2px 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
-
-}
-@keyframes pulse-red {
-    from {
-        background-color: #dc2626;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
-    }
-    to {
-        background-color: #ef4444;
-        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.6);
-    }
 }
 
-.bet{
+.bet {
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 4px;
     align-items: center;
     margin-top: 14px;
     padding-top: 23px;
+    margin-left: 1rem;
 }
-
