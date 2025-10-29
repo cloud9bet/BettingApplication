@@ -1,0 +1,137 @@
+import React, { useState, useRef } from "react";
+import Button from "./Button";
+import { SYMBOLS, PAYLINES, PAYOUTS } from "./constants";
+import {CalculatePayout} from "./CalculatePayout";
+import { Sound } from "./Sounds";
+import Reel from "./Reel";
+import InputNumber from "./InputNumber";
+import "../gameStyles/SlotMachine.css";
+
+
+function generateFinalGrid() {
+    const grid = [[], [], []];
+    for (let row = 0; row < 3; row++) {
+        grid[row] = [];
+        for (let col = 0; col < 3; col++) {
+            grid[row][col] = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+        }
+    }
+    return grid;
+}
+
+
+export default function SlotMachine() {
+    const [bet, setBet] = useState(20);
+    const [credits, setCredits] = useState(200);
+    const [spinning, setSpinning] = useState(false);
+    const [message, setMessage] = useState("");
+    const [finalGrid, setFinalGrid] = useState(generateFinalGrid());
+    
+    // ResultsRef holder på kolonner
+    const resultsRef = useRef(Array(3).fill(null));
+
+    const startSpin = () => {
+        if (spinning) {
+            console.log('Already spinning, ignoring...');
+            return;}
+        if (bet <= 0 || bet > credits) {
+            setMessage("You dont got the facilities fam, you need to top up your wallet");
+            return;
+        }
+
+        console.log('Starting spin...'); //HUSK AT FJERNE ALT LOGGING
+        setSpinning(true);
+        Sound.playSpin();
+        setMessage("Spinning");
+        setCredits(c => c - bet);
+        resultsRef.current = Array(3).fill(null);
+        setFinalGrid(generateFinalGrid());
+    };
+
+    const stopSpin = (colIndex, visibleArray) => {
+    console.log(`Reel ${colIndex} stopped with:`, visibleArray);
+    resultsRef.current[colIndex] = visibleArray;
+
+    const allReelsStopped = resultsRef.current.every(r => r !== null && r.length === 3);
+    console.log('All reels stopped?', allReelsStopped, resultsRef.current); // Debug log
+
+    // Tjek om alle reels er stoppet
+    if (!allReelsStopped) {
+        return; 
+    }
+
+    // Byg grid fra results
+    const grid = [[], [], []];
+    for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
+            grid[row][col] = resultsRef.current[col][row];
+        }
+    }
+
+    console.log('Final grid:', grid);
+
+    const {totalPayout} = CalculatePayout({ grid, bet, payouts: PAYOUTS, paylines: PAYLINES });
+     console.log('Payout:', totalPayout);
+
+    setCredits(c => c + totalPayout);
+
+    if (totalPayout > 0) {
+        setMessage(`You won ${totalPayout}$`);
+        Sound.playWin();
+    } else {
+        setMessage("No winning lines. Try again!");
+        Sound.playFail();
+    }
+
+    // VIGTIGT: Reset spinning state EFTER alt er færdigt
+    setSpinning(false);
+
+    resultsRef.current = Array(3).fill(null);
+};
+    
+    return (
+        <div className="slot-machine-container">
+        <div className="slot-machine big">
+            <div className="info">
+                <div>
+                    <div className="balance-label">Session Balance</div>
+                    <div className={`balance-amount ${credits < 0 ? 'negative' : ''}`}>
+                        {credits}$
+                    </div>
+                </div>
+            <p>
+            <div className="bet">Bet</div>  
+            <InputNumber
+                value={bet}
+                onChange={val => setBet(val)}
+                min={1}
+                max={credits}
+                disabled={spinning}
+            />
+            </p>
+            <Button
+                onClick = {startSpin}
+                disabled = {spinning || bet <= 0 || bet > credits}
+            >
+                Spin
+            </Button>
+            </div>
+            <div className="grid">
+                {[0, 1, 2].map(colIndex => (
+                    <Reel
+                        key={colIndex}
+                        index={colIndex}
+                        spinning={spinning}
+                        symbols={SYMBOLS}
+                        finalSymbols={finalGrid.map(row => row[colIndex])}
+                        totalRandom={24}
+                        onStop={stopSpin}
+                    />
+                ))}
+            </div>
+            <p className="message">{message}</p>
+        </div>
+        </div>
+
+    );
+}

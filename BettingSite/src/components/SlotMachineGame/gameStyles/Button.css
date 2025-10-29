@@ -1,0 +1,21 @@
+.slot-button {
+    padding: 2px 12px;
+    border-radius: 10px;
+    border: 2px solid #f7c948;
+    background-color: #f7c948;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.7s;
+    font-family: inherit;
+    margin-top: 60px;
+}
+
+.slot-button:hover:not(:disabled) {
+    background-color: #f7eb06;
+    transform: translateY(-1px);
+    box-shadow: 0 0 50px rgba(243, 192, 66, 0.96);
+    }
+.slot-button:hover{
+    background-color: #f7c948;
+    color:white;
+}

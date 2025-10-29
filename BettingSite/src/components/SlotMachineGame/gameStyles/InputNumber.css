@@ -1,0 +1,16 @@
+.slot-input {
+    width: 55px;
+    padding: 6px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #293953;
+    background: linear-gradient(#111827, #1f2937);
+    color: #fff;
+    font-size: 1rem;
+    left: -557px;
+}
+
+.slot-input:disabled {
+    opacity: 0.7;   
+    cursor: not-allowed;
+}
