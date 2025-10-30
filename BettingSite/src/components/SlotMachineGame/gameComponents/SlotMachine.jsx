@@ -27,7 +27,7 @@ export default function SlotMachine() {
     const { totalBalance, setTotalBalance } = useUserBalance();
 
     const [bet, setBet] = useState(20);
-    const [credits, setCredits] = useState(200);
+    const [credits, setCredits] = useState(0);
     const [spinning, setSpinning] = useState(false);
     const [message, setMessage] = useState("");
     const [finalGrid, setFinalGrid] = useState(generateFinalGrid());
@@ -40,7 +40,7 @@ export default function SlotMachine() {
             console.log('Already spinning, ignoring...');
             return;
         }
-        if (bet <= 0 || bet > credits) {
+        if (bet <= 0 || bet > totalBalance) {
             setMessage("You dont got the facilities fam, you need to top up your wallet");
             return;
         }
@@ -140,7 +140,7 @@ export default function SlotMachine() {
 
                     <Button
                         onClick={startSpin}
-                        disabled={spinning || bet <= 0 || bet > credits}
+                        disabled={spinning || bet <= 0 || bet > totalBalance}
                     >
                         Spin
                     </Button>
