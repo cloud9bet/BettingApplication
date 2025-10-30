@@ -7,6 +7,8 @@ import Reel from "./Reel";
 import InputNumber from "./InputNumber";
 import "../gameStyles/SlotMachine.css";
 
+import { useUserBalance } from "../../../Context/BalanceContext";
+
 
 function generateFinalGrid() {
     const grid = [[], [], []];
@@ -21,6 +23,9 @@ function generateFinalGrid() {
 
 
 export default function SlotMachine() {
+
+    const { totalBalance, setTotalBalance } = useUserBalance();
+
     const [bet, setBet] = useState(20);
     const [credits, setCredits] = useState(200);
     const [spinning, setSpinning] = useState(false);
@@ -45,6 +50,9 @@ export default function SlotMachine() {
         Sound.playSpin();
         setMessage("Spinning");
         setCredits(c => c - bet);
+
+        setTotalBalance(prev => prev - bet);
+
         resultsRef.current = Array(3).fill(null);
         setFinalGrid(generateFinalGrid());
     };
@@ -75,6 +83,9 @@ export default function SlotMachine() {
         console.log('Payout:', totalPayout);
 
         setCredits(c => c + totalPayout);
+
+        setTotalBalance(prev => prev + totalPayout);
+
 
         if (totalPayout > 0) {
             setMessage(`You won ${totalPayout}$`);
