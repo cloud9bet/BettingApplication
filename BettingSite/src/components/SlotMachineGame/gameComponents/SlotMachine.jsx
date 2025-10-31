@@ -49,9 +49,9 @@ export default function SlotMachine() {
         setSpinning(true);
         Sound.playSpin();
         setMessage("Spinning");
-        setCredits(c => c - bet);
+        //setCredits(c => c - bet);
 
-        setTotalBalance(prev => prev - bet);
+        //setTotalBalance(prev => prev - bet);
 
         resultsRef.current = Array(3).fill(null);
         setFinalGrid(generateFinalGrid());
@@ -82,16 +82,20 @@ export default function SlotMachine() {
         const { totalPayout } = CalculatePayout({ grid, bet, payouts: PAYOUTS, paylines: PAYLINES });
         console.log('Payout:', totalPayout);
 
-        setCredits(c => c + totalPayout);
+        //setCredits(c => c + totalPayout);
 
-        setTotalBalance(prev => prev + totalPayout);
+        //setTotalBalance(prev => prev + totalPayout);
 
 
         if (totalPayout > 0) {
             setMessage(`You won ${totalPayout}$`);
+            setTotalBalance(prev => prev + totalPayout - bet);
+            setCredits(c => c + totalPayout - bet);
             Sound.playWin();
         } else {
             setMessage("No winning lines. Try again!");
+            setTotalBalance(prev => prev - bet);
+            setCredits(c => c - bet);
             Sound.playFail();
         }
 
@@ -122,7 +126,7 @@ export default function SlotMachine() {
                 <div className="info">
                     <div>
                         <div className="balance-label">Session Balance</div>
-                        <div className={`balance-amount ${credits < 0 ? 'negative' : ''}`}>
+                        <div className={`balance-amount ${credits >= 0 ? "positiv" : "negativ"}`}>
                             {credits}$
                         </div>
                     </div>

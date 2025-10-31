@@ -110,7 +110,7 @@
     font-weight: bold;
     color: #ffffff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    background-color: #54af40;
+    /*background-color: #54af40;*/
     border-radius: 10px;
     border: black solid 2px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
@@ -120,6 +120,14 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
+}
+
+.positiv{
+    background-color: #54af40;
+}
+
+.negativ{
+    background-color: tomato;
 }
 
 .bet {
