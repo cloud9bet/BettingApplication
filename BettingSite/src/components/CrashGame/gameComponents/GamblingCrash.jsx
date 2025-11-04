@@ -10,6 +10,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useUserBalance } from "../../../Context/BalanceContext";
+import winMP3 from "../sounds/win.mp3"
+import lossMP3 from "../sounds/explosion.mp3"
 
 function GamblingCrash() {
   const { totalBalance, setTotalBalance } = useUserBalance();
@@ -22,6 +24,9 @@ function GamblingCrash() {
   const [message, setMessage] = useState("");
   const [data, setData] = useState([{ time: 0, multiplier: 1 }]);
   const timerRef = useRef(null);
+
+  let winSound = new Audio(winMP3);
+  let lossSound = new Audio(lossMP3);
 
   function startGame() {
     if (isPlaying) return;
@@ -52,6 +57,9 @@ function GamblingCrash() {
     setCashedOut(true);
     const payout = Math.floor(bet * multiplier);
     setBalance((b) => b + payout);
+
+    winSound.play();
+
     setTotalBalance((b) => b + payout);
     setMessage(`You stopped at ${multiplier.toFixed(2)}x and won ${payout}`);
     clearInterval(timerRef.current);
@@ -86,6 +94,9 @@ function GamblingCrash() {
             { time: elapsed, multiplier: crashPoint },
             { time: elapsed + 0.05, multiplier: 0 },
           ]);
+
+          lossSound.play();
+
           setMessage(`Crash at ${crashPoint.toFixed(2)}x! You lost`);
           setIsPlaying(false);
         }
