@@ -19,17 +19,12 @@ export function useCrashGame() {
   const winSoundRef = useRef(new Audio(winMP3));
   const lossSoundRef = useRef(new Audio(lossMP3));
 
-  /**
-   * Validates if the bet is valid
-   * @returns {boolean} True if bet is valid
-   */
+
   const isBetValid = () => {
     return bet > 0 && bet <= totalBalance;
   };
 
-  /**
-   * Starts a new game round
-   */
+
   const startGame = () => {
     if (isPlaying) return;
     
@@ -49,9 +44,7 @@ export function useCrashGame() {
     setMessage("The game is on... Press STOP before it crashes!");
   };
 
-  /**
-   * Stops the game and cashes out
-   */
+
   const stopGame = () => {
     if (!isPlaying || cashedOut) return;
     
@@ -66,17 +59,14 @@ export function useCrashGame() {
     setIsPlaying(false);
   };
 
-  /**
-   * Handles the bet amount change
-   * @param {number} newBet - The new bet amount
-   */
+
   const handleBetChange = (newBet) => {
     if (newBet <= totalBalance) {
       setBet(newBet);
     }
   };
 
-  // Game loop effect
+
   useEffect(() => {
     if (!isPlaying || crashPoint == null) return;
 
