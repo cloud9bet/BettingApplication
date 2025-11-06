@@ -4,11 +4,11 @@ function CrashRules() {
   return (
     <div className="rules">
       <i>
-        <strong>Regler: </strong>
-        Placer en indsats og tryk <strong>Start</strong>. Multiplieren
-        stiger — tryk <strong>Stop</strong> inden den crasher! Hvis du når
-        at stoppe før crash, vinder du indsats × multiplier. Dette er kun et
-        spil med virtuelle mønter.
+          <strong>Rules:</strong>
+          Place a bet and press <strong>Start</strong>. The multiplier
+          increases — press <strong>Stop</strong> before it crashes! If you manage
+          to stop before the crash, you win bet × multiplier. This is a
+          game with virtual coins only.
       </i>
     </div>
   );
