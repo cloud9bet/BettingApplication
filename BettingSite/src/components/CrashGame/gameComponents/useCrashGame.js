@@ -32,7 +32,7 @@ export function useCrashGame() {
       return;
     }
 
-    const newCrash = 3.000;
+    const newCrash = 2.500; // TODO: Fix til korrekt endpoint
     setIsPlaying(true);
     setMultiplier(1);
     setCashedOut(false);
