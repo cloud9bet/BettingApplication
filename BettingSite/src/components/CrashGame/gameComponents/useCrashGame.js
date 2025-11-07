@@ -36,7 +36,6 @@ export function useCrashGame() {
     setIsPlaying(true);
     setMultiplier(1);
     setCashedOut(false);
-    setBalance((b) => b - bet);
     setTotalBalance((b) => b - bet);
     setCrashPoint(newCrash);
     setData([{ time: 0, multiplier: 1 }]);
@@ -55,6 +54,7 @@ export function useCrashGame() {
     
     winSoundRef.current.play();
     
+    setBalance((b) => b - bet);
     setMessage(`You stopped at ${Number(autoStop).toFixed(2)}x and won ${payout}`);
     setIsPlaying(false);
   };
@@ -121,6 +121,7 @@ export function useCrashGame() {
           ]);
 
           lossSoundRef.current.play();
+          setBalance((b) => b - bet);
           setMessage(`Crash at ${Number(crashPoint).toFixed(2)}x! You lost`);
           setIsPlaying(false);
         }
