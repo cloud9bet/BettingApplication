@@ -9,9 +9,18 @@
     
 }
 
-.CoinFlipGamePage-game, .CrashGamePage-game{
+.CoinFlipGamePage-game{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.CrashGamePage-game
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center; 
     flex-wrap: wrap;
 }
