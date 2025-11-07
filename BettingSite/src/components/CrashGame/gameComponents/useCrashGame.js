@@ -9,6 +9,7 @@ export function useCrashGame() {
   const { totalBalance, setTotalBalance } = useUserBalance();
   const [balance, setBalance] = useState(0);
   const [bet, setBet] = useState(50);
+  const [autoStop, setAutoStop] = useState(2)
   const [multiplier, setMultiplier] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
   const [crashPoint, setCrashPoint] = useState(null);
@@ -26,7 +27,6 @@ export function useCrashGame() {
 
   const startGame = () => {
     if (isPlaying) return;
-    
     if (!isBetValid()) {
       setMessage("Not enough balance to play!");
       return;
@@ -40,7 +40,7 @@ export function useCrashGame() {
     setTotalBalance((b) => b - bet);
     setCrashPoint(newCrash);
     setData([{ time: 0, multiplier: 1 }]);
-    setMessage("The game is on... Press STOP before it crashes!");
+    setMessage("The game is on...");
   };
 
 
@@ -60,6 +60,12 @@ export function useCrashGame() {
 
 
   const handleBetChange = (newBet) => {
+    if (newBet <= totalBalance) {
+      setBet(newBet);
+    }
+  };
+
+    const handleAutoStopChange = (newBet) => {
     if (newBet <= totalBalance) {
       setBet(newBet);
     }
@@ -116,6 +122,7 @@ export function useCrashGame() {
   return {
     balance,
     bet,
+    autoStop,
     multiplier,
     isPlaying,
     cashedOut,
@@ -125,5 +132,6 @@ export function useCrashGame() {
     startGame,
     stopGame,
     handleBetChange,
+    handleAutoStopChange,
   };
 }
