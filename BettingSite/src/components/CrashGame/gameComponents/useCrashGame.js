@@ -32,7 +32,7 @@ export function useCrashGame() {
       return;
     }
 
-    const newCrash = generateCrashPoint();
+    const newCrash = 5;
     setIsPlaying(true);
     setMultiplier(1);
     setCashedOut(false);

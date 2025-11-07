@@ -2,10 +2,12 @@ import React from "react";
 
 
 function CrashControls({ 
-  bet, 
+  bet,
+  autoStop, 
   isPlaying, 
   cashedOut, 
-  onBetChange, 
+  onBetChange,
+  onAutoStopChange, 
   onToggle 
 }) {
   const handleBetInput = (e) => {
@@ -13,12 +15,12 @@ function CrashControls({
     onBetChange(newBet);
   };
 
-  const getButtonText = () => {
-    if (isPlaying) {
-      return cashedOut ? "Cashed" : "Stop";
-    }
-    return "Start";
+    const handleAutoStopInput = (e) => {
+    const newAutoStop = Number(e.target.value);
+    onAutoStopChange(newAutoStop);
   };
+
+  const isAutoStopValid = !isNaN(autoStop) && autoStop > 1;
 
   return (
     <>
@@ -31,15 +33,24 @@ function CrashControls({
           className="bet-input"
           onChange={handleBetInput}
         />
+
+        <label className="bet-label">Auto Stop at:</label>
+        <input
+          type="text"
+          value={autoStop}
+          disabled={isPlaying}
+          className="bet-input"
+          onChange={handleAutoStopInput}
+          />
       </div>
 
       <div className="control-row">
         <button
           onClick={onToggle}
           className="btn-toggle"
-          disabled={isPlaying && cashedOut}
-        >
-          {getButtonText()}
+          disabled={isPlaying || !isAutoStopValid}
+        > 
+          Start
         </button>
       </div>
     </>

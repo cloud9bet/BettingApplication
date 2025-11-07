@@ -63,7 +63,10 @@
 .bet-row 
 { 
   margin-bottom: 12px;
-  color: #7ee787; 
+  color: #7ee787;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .bet-input
