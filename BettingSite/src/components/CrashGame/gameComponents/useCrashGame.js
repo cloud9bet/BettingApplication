@@ -32,7 +32,7 @@ export function useCrashGame() {
       return;
     }
 
-    const newCrash = 5;
+    const newCrash = 3.000;
     setIsPlaying(true);
     setMultiplier(1);
     setCashedOut(false);
@@ -48,13 +48,14 @@ export function useCrashGame() {
     if (!isPlaying || cashedOut) return;
     
     setCashedOut(true);
-    const payout = Math.floor(bet * multiplier);
+    const autoStopNumber = Number(autoStop)
+    const payout = Math.floor(bet * autoStopNumber);
     setBalance((b) => b + payout);
     setTotalBalance((b) => b + payout);
     
     winSoundRef.current.play();
     
-    setMessage(`You stopped at ${multiplier.toFixed(2)}x and won ${payout}`);
+    setMessage(`You stopped at ${Number(autoStop).toFixed(2)}x and won ${payout}`);
     setIsPlaying(false);
   };
 
@@ -65,9 +66,18 @@ export function useCrashGame() {
     }
   };
 
-    const handleAutoStopChange = (newBet) => {
-    if (newBet <= totalBalance) {
-      setBet(newBet);
+    const handleAutoStopChange = (newAutoStop) => {
+      if(newAutoStop === "" || (!isNaN(newAutoStop) && newAutoStop >= 1)){
+        setAutoStop(newAutoStop);
+      }
+  };
+
+  
+  const handleToggle = () => {
+    if (!isPlaying) {
+      startGame();
+    } else {
+      stopGame();
     }
   };
 
@@ -76,7 +86,7 @@ export function useCrashGame() {
     if (!isPlaying || crashPoint == null) return;
 
     const start = performance.now();
-    const growthRate = 0.3;
+    const growthRate = 0.2;
     let frameId;
 
     function tick(now) {
@@ -94,9 +104,15 @@ export function useCrashGame() {
       });
 
       // Check if crashed
+      if (newMult >= autoStop - 0.001 && !cashedOut) {
+        cancelAnimationFrame(frameId);
+        stopGame();
+        return
+      }
+
       if (newMult >= crashPoint) {
         cancelAnimationFrame(frameId);
-        
+
         if (!cashedOut) {
           setData((prev) => [
             ...prev,
@@ -105,7 +121,7 @@ export function useCrashGame() {
           ]);
 
           lossSoundRef.current.play();
-          setMessage(`Crash at ${crashPoint.toFixed(2)}x! You lost`);
+          setMessage(`Crash at ${Number(crashPoint).toFixed(2)}x! You lost`);
           setIsPlaying(false);
         }
         return;
@@ -117,7 +133,7 @@ export function useCrashGame() {
     frameId = requestAnimationFrame(tick);
 
     return () => cancelAnimationFrame(frameId);
-  }, [isPlaying, crashPoint, cashedOut]);
+  }, [isPlaying, crashPoint, cashedOut, Number(autoStop)]);
 
   return {
     balance,
@@ -133,5 +149,6 @@ export function useCrashGame() {
     stopGame,
     handleBetChange,
     handleAutoStopChange,
+    handleToggle,
   };
 }

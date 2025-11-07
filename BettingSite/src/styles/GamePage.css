@@ -9,7 +9,7 @@
     
 }
 
-.CoinFlipGamePage-game{
+.CoinFlipGamePage-game, .CrashGamePage-game{
     display: flex;
     flex-direction: row;
     justify-content: space-around;

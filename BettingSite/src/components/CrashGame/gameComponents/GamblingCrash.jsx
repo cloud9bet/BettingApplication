@@ -22,18 +22,11 @@ function GamblingCrash() {
     stopGame,
     handleBetChange,
     handleAutoStopChange,
+    handleToggle,
   } = useCrashGame();
 
-  const handleToggle = () => {
-    if (!isPlaying) {
-      startGame();
-    } else {
-      stopGame();
-    }
-  };
 
   return (
-    <div className="CrashGamePage-container">
       <div className="crash-container">
         <div className="crash-main">
           <div className="crash-stats">
@@ -54,7 +47,6 @@ function GamblingCrash() {
         <CrashMessage message={message} />
         <CrashRules />
       </div>
-    </div>
   );
 }
 

@@ -16,8 +16,11 @@ function CrashControls({
   };
 
     const handleAutoStopInput = (e) => {
-    const newAutoStop = Number(e.target.value);
-    onAutoStopChange(newAutoStop);
+    const newAutoStop = e.target.value;
+    if (newAutoStop === "" || /^\d*\.?\d*$/.test(newAutoStop))
+    {
+      onAutoStopChange(newAutoStop);
+    }
   };
 
   const isAutoStopValid = !isNaN(autoStop) && autoStop > 1;
