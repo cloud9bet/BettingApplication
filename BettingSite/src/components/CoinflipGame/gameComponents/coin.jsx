@@ -5,7 +5,7 @@ import '../gameStyles/coin.css';
 
 function Coin({onAnimationEnd, anim, currentSide}) {
   return (
-    <div
+    <div data-testid="coin-id"
       className={`coin ${anim} ${!anim ? currentSide + "-result" : ""}`}
       onAnimationEnd={onAnimationEnd}>
       <div className="heads">

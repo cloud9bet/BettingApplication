@@ -34,8 +34,6 @@ function CoinflipGame() {
   const handleAnimationEnd = () => {
     setAnim("");
     // setBet(0);
-    
-
 
     // først her — når animationen er færdig — opdaterer vi balancen
     if (
@@ -68,7 +66,7 @@ function CoinflipGame() {
         <label htmlFor="Session Balance" id="session">
           Session Balance
         </label>
-        <label htmlFor="Amount" id="balance" className={balance >= 0 ? "positiv" : "negativ"}>
+        <label htmlFor="Amount" data-testid="balance-label"  id="balance" className={balance >= 0 ? "positiv" : "negativ"}>
           {balance}$
         </label>
 

@@ -10,7 +10,7 @@ function Balance() {
   return (
     <>
       <div className="BalanceInput">
-        <p>Balance: {totalBalance} $</p>
+        <p data-testid = "balance" >Balance: {totalBalance} $</p>
       </div>
     </>
   )

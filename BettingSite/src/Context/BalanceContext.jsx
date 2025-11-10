@@ -1,4 +1,4 @@
-// BalanceContext.js
+// BalanceContext.jsx
 import { createContext, useContext, useState } from "react";
 
 const BalanceContext = createContext();

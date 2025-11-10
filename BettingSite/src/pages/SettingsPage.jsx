@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import HeaderSettings from "../components/HeaderSettings"
+import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Limit from "../components/Limit"
 import History from "../components/History"
@@ -7,7 +7,6 @@ import '../styles/Settings.css'
 import '../styles/PopUp.css'
 
 import { useState } from "react"
-
 
 function SettingsPage() {
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ function SettingsPage() {
   return (
     <div className="Settingspage-container">
       <div >
-        <HeaderSettings />
+        <Header/>
       </div>
       <h1>Settings</h1>
       <div className="Settingspage-btns-container">
@@ -68,7 +67,7 @@ function SettingsPage() {
         </button>
       </div>
       <div>
-        <Footer />
+        <Footer/>
       </div>
     </div>
   )
