@@ -4,10 +4,12 @@ import "../styles/Deposit.css";
 import "../styles/Popup.css";
 
 
+
 function Deposit() {
   const [deposit, setDeposit] = useState(false);
 
   function DepostClicked() {
+    // await login("admin", "Admin123456!");
     setDeposit(true);;
   }
   function CloseDeposit() {
