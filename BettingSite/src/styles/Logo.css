@@ -42,3 +42,10 @@
   /* border: black solid 5px; */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 }
+
+
+.disabled{
+  filter: brightness(0.7) contrast(1.2);
+    cursor: not-allowed;
+
+}

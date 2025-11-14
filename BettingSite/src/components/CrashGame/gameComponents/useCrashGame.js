@@ -1,12 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { useUserBalance } from "../../../Context/BalanceContext";
+import {useUserInfo}  from "../../../Context/UserContext";
 import { calculateMultiplier } from "./crashUtils";
 import winMP3 from "../sounds/win.mp3";
 import lossMP3 from "../sounds/explosion.mp3";
 
 
 export function useCrashGame() {
-  const { totalBalance, setTotalBalance } = useUserBalance();
+  const { totalBalance, setTotalBalance } = useUserInfo();
   const [balance, setBalance] = useState(0);
   const [bet, setBet] = useState(50);
   const [autoStop, setAutoStop] = useState(2)

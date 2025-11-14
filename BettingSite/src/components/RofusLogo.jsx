@@ -7,7 +7,7 @@ function RofusLogo() {
     const navigate = useNavigate();
   
   function OnRofusLogoClicked() {
-    navigate("/settings");
+    navigate("/settings"); //navigate til rofus
   }
 
   return ( 

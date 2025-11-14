@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "../gameStyles/mainStyles.css";
-import { useUserBalance } from "../../../Context/BalanceContext";
+import  {useUserInfo}  from "../../../Context/UserContext";
 import winMP3 from "../sounds/level-win-6416.mp3"
 import lossMP3 from "../sounds/lose-sfx-365579.mp3"
 import gameMusicMP3 from "../sounds/game-music-loop-7-145285.mp3"
 import Coin from "./coin";
 
 function CoinflipGame() {
-  const { totalBalance, setTotalBalance } = useUserBalance();
+  const { totalBalance, setTotalBalance } = useUserInfo();
   const [anim, setAnim] = useState("");
   const [balance, setBalance] = useState(0);
   const [choice, setChoice] = useState("");

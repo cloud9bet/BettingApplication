@@ -20,7 +20,7 @@ const handleToggleMock = vi.fn(() => startGameMock());
 // Mockings til test
 vi.mock('../../src/Context/BalanceContext', () => {
     return {
-        useUserBalance: () => ({
+        usetotalBalance: () => ({
             totalBalance: 1000,
             setTotalBalance: vi.fn(),
         }),

@@ -3,14 +3,14 @@ import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import './styles/index.css'
 import App from './App.jsx'
-import { BalanceContextProvider } from './Context/BalanceContext.jsx'
+import { UserContextProvider } from './Context/UserContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode> //forhindrer to render af useEffect grundet debug
     <HashRouter>
-      <BalanceContextProvider>
+      <UserContextProvider>
         <App />
-      </BalanceContextProvider>
+      </UserContextProvider>
     </HashRouter>
-  </StrictMode>
+  // </StrictMode>
 )

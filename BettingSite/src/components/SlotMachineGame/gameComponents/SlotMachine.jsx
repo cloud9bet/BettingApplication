@@ -7,7 +7,7 @@ import Reel from "./Reel";
 import InputNumber from "./InputNumber";
 import "../gameStyles/SlotMachine.css";
 
-import { useUserBalance } from "../../../Context/BalanceContext";
+import  {useUserInfo}  from "../../../Context/UserContext";
 
 
 function generateFinalGrid() {
@@ -24,7 +24,7 @@ function generateFinalGrid() {
 
 export default function SlotMachine() {
 
-    const { totalBalance, setTotalBalance } = useUserBalance();
+    const { totalBalance, setTotalBalance } = useUserInfo();
 
     const [bet, setBet] = useState(20);
     const [credits, setCredits] = useState(0);

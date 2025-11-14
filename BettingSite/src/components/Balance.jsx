@@ -1,9 +1,10 @@
-import { useUserBalance } from '../Context/BalanceContext';
-import '../styles/Balance.css'
+import {useUserInfo}  from '../Context/UserContext';
+// import '../styles/Balance.css'
+import '../styles/Header.css'
 import { useState } from "react";
 
 function Balance() {
-  const { totalBalance, setTotalBalance } = useUserBalance();
+  const { totalBalance } = useUserInfo();
 
 
 

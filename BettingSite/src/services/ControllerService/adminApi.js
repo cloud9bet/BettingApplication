@@ -2,7 +2,7 @@ import { Api } from "../apiService";
 //alt logges lige nu men skal ændres til at return stuff når de er testet
 
 //huske skal enten være true eller false
-async function SetUserActiveState(id, status) {
+export async function SetUserActiveState(id, status) {
 
     try {
         const response = await Api.put(`/Admin/activeStatus?id=${id}&status=${status}`);
@@ -15,7 +15,7 @@ async function SetUserActiveState(id, status) {
 
 
 
-async function GetAllUserInfoAsync() {
+export async function GetAllUserInfoAsync() {
     try {
         const response = await Api.get(`/Admin/user`);
         console.log(response.data);
@@ -27,7 +27,7 @@ async function GetAllUserInfoAsync() {
     }
 }
 
-async function GetAllUserDepositAsync() {
+export async function GetAllUserDepositAsync() {
     try {
         const response = await Api.get(`/Admin/deposit`);
         console.log(response.data);
@@ -39,7 +39,7 @@ async function GetAllUserDepositAsync() {
     }
 }
 
-async function GetAllUserTransactionAsync() {
+export async function GetAllUserTransactionAsync() {
     try {
         const response = await Api.get(`/Admin/transaction`);
         console.log(response.data);
@@ -53,7 +53,7 @@ async function GetAllUserTransactionAsync() {
 
 
 
-async function GetUserTransactionByIdAsync(id) {
+export async function GetUserTransactionByIdAsync(id) {
     try {
         const response = await Api.get(`/Admin/transaction${id}`);
         console.log(response.data);
@@ -65,7 +65,7 @@ async function GetUserTransactionByIdAsync(id) {
     }
 }
 
-async function GetUserDepositByIdAsync(id) {
+export async function GetUserDepositByIdAsync(id) {
     try {
         const response = await Api.get(`/Admin/deposit${id}`);
         console.log(response.data);

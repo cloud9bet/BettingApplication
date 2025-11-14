@@ -1,15 +1,32 @@
 import { useState } from "react";
+import { useUserInfo } from '../Context/UserContext';
+import { SetUserDepositLimit } from "../services/ControllerService/userApi";
+
 import '../styles/Popup.css' 
 
 
 function Limit({ onClose }) {
-  const [limit, setLimit] = useState()
+  const [limit, setLimit] = useState("")
+  const { setDepositLimit } = useUserInfo();
+  
+  async function putDepositLimit() {
+
+    const result = await SetUserDepositLimit(limit);
+
+    if (result) {
+      setDepositLimit(limit);
+    }
+    else {
+      alert("depositLimit was not set");
+    }
+  }
 
   function handleInputChange(event){
     setLimit(event.target.value);
   }
 
   function setLimitClicked(){
+    putDepositLimit();
     setLimit(0);
     onClose();
   }

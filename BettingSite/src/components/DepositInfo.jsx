@@ -1,26 +1,46 @@
 import { useState } from "react";
-import '../styles/Deposit.css' 
-import '../styles/Popup.css' 
+import { useUserInfo } from '../Context/UserContext';
+import { AddDepositAsync } from "../services/ControllerService/userApi";
+// import '../styles/Deposit.css' 
+import '../styles/Popup.css'
+import '../styles/Header.css'
 
 
 
 function DepositInfo({ onClose }) {
-  const [DInput, setDinput] = useState()
+  const [depositInput, setDepositInput] = useState("");
+  const { setTotalBalance } = useUserInfo();
 
-  function handleInputChange(event){
-    setDinput(event.target.value);
+
+  async function postDeposit() {
+
+    const result = await AddDepositAsync(depositInput);
+
+    if (result) {
+      setTotalBalance(prev => Number(prev) + Number(depositInput));
+    }
+    else {
+      alert("deposit did not go trough");
+    }
   }
 
-  function ResetInput(){
-    setDinput(0);
+
+  function handleInputChange(event) {
+    setDepositInput(event.target.value);
+  }
+
+  function SubmitInput() {
+    postDeposit();
+    setDepositInput(0);
     onClose();
   }
 
   return (
-      <div className="Deposit-container">
-        <input type="text" className="DepositInput" placeholder="Enter amount" value={DInput} onChange={handleInputChange}/>
-            <input type="submit" className="ResetButton" onClick={ResetInput} value="pay"/>
-      </div>
+    <div className="Deposit-container">
+      <input type="text" className="DepositInput" placeholder="Enter amount" value={depositInput} onChange={handleInputChange} />
+      <input type="submit" className="SubmitButton" onClick={SubmitInput} value="pay" />
+    </div>
   )
+
 }
 export default DepositInfo

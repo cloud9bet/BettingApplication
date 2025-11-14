@@ -56,6 +56,291 @@
     margin:auto;
     width: auto;
     /* border: #0062ff solid 2px;    */
-}
+    }
 
 }
+
+
+/* For Deposit Info*/
+.Deposit-container {
+    display: flex;
+    /* flex-direction: row; */
+
+    /*Nyt logik*/
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+
+}
+
+.DepositInput {
+    border-radius: 15px;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    border: transparent;
+    background-color: #2b3a54;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.SubmitButton {
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+    border: transparent;
+    font-weight: bold;
+    color: white;
+    background-color: #2b3a54;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+.Settingspage-limit-popup {
+    display: flex;
+    /* flex-direction: row; */
+    /*Nyt logik*/
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2;
+
+}
+
+
+/* For Deposit Info*/
+.Limit-container {
+    display: flex;
+    /* flex-direction: row; */
+
+    /*Nyt logik*/
+    flex-direction: column;
+    width: 100%;
+    margin-top: 150px;
+    align-items: center;
+    gap: 10px;
+    padding: 50px;
+    border-radius: 20px;
+    background-color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+
+.LimitInput {
+    border-radius: 15px;
+    height: 40px;
+    width: 150px;
+    text-align: center;
+    border: transparent;
+    background-color: #2b3a54;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+.setLimit-btn {
+    width: 80px;
+    height: 40px;
+    border-radius: 15px;
+    border: transparent;
+    font-weight: bold;
+    color: white;
+    background-color: #2b3a54;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.setLimit-btn:hover {
+    background-color: #5159ed;
+}
+
+.LimitInput::placeholder {
+    color: #ffffff;
+    font-style: italic;
+}
+
+
+
+
+.Settingspage-history-popup {
+    /* display: flex;
+
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2;
+    max-height: 80vh;
+    /* Maksimal højde på 80% af viewport */
+    width: 400px;
+    /* Fast bredde */
+
+}
+
+.History-container {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #1e293b;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+    max-height: 100%;
+    /* Maksimal højde */
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Transaktionsliste som er scrollbar */
+.transactions-list {
+    width: 100%;
+    max-height: 400px;
+    /* Juster efter behov */
+    overflow-y: auto;
+    /* Scrollbar inde i boksen */
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #2b3a54;
+    box-sizing: border-box;
+}
+
+
+.History-btn-container {
+    display: flex;
+    flex-direction: row;
+    width: 50px;
+    height: 50px;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 300px;
+    margin-bottom: 10px;
+}
+
+.CloseHistory-btn {
+    width: 50px;
+    height: 20px;  
+    border-radius: 10px;
+    border: transparent;
+    font-weight: bold;
+    color: white;
+    background-color: tomato;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+.CloseHistory-btn:hover {
+    background-color: tomato;
+
+    filter: brightness(0.7) contrast(1.2);
+}
+
+.positive {
+    color: lightgreen;
+    font-weight: bold;
+
+}
+
+.negative {
+    color: tomato;
+    font-weight: bold;
+
+}
+
+.History-container h2 {
+    color: white
+}
+
+
+/* Style scrollbaren */
+.transactions-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.transactions-list::-webkit-scrollbar-track {
+    background: #2b3a54;
+    border-radius: 10px;
+}
+
+.transactions-list::-webkit-scrollbar-thumb {
+    background: #5159ed;
+    border-radius: 10px;
+}
+
+.transactions-list::-webkit-scrollbar-thumb:hover {
+    background: #3a42c4;
+}
+
+
+
+/******Deposit*******/
+.DepositPress {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 2;
+
+}
+
+
+
+.SubmitButton:hover {
+    background-color: #5159ed;
+}
+
+
+
+
+.DepositInput::placeholder {
+    color: white;
+    font-style: italic;
+}
+
+
+.DepositButton{
+    width: 100px;;
+}
+
+
+
+/********Balance********/
+.BalanceInput {
+  border: 2px solid transparent;     
+  font-weight: bold;
+  font-size: 16px;               
+  border-radius: 15px;
+  height: 50px;                  
+  width: 150px;                  
+  background-color: rgb(84, 175, 64);          
+  box-sizing: border-box;
+  color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+
+}
+.BalanceInput p {
+    margin-top: 10px;
+}
+
+

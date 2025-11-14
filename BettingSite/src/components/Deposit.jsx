@@ -1,17 +1,17 @@
 import { useState } from "react";
 import DepositInfo from "./DepositInfo";
-import "../styles/Deposit.css";
+// import "../styles/Deposit.css";
 import "../styles/Popup.css";
-
+import "../styles/Header.css";
 
 
 function Deposit() {
   const [deposit, setDeposit] = useState(false);
 
   function DepostClicked() {
-    // await login("admin", "Admin123456!");
-    setDeposit(true);;
+    setDeposit(true)
   }
+
   function CloseDeposit() {
     setDeposit(false);
   }

@@ -6,7 +6,7 @@
     height: 100vh;
     z-index: 1;
 
-    /*For at centrere containeren*/
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,12 +21,10 @@
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* For Deposit Info*/
+
 .Deposit-container {
     display: flex;
-    /* flex-direction: row; */
 
-    /*Nyt logik*/
     flex-direction: column;
     width: 100%;
     align-items: center;
@@ -65,21 +63,16 @@
 
 .Settingspage-limit-popup {
     display: flex;
-    /* flex-direction: row; */
-    /*Nyt logik*/
+
     flex-direction: column;
     gap: 10px;
     z-index: 2;
 
 }
 
-
-/* For Deposit Info*/
 .Limit-container {
     display: flex;
-    /* flex-direction: row; */
 
-    /*Nyt logik*/
     flex-direction: column;
     width: 100%;
     margin-top: 150px;
@@ -128,19 +121,15 @@
 
 
 .Settingspage-history-popup {
-    /* display: flex;
 
-    flex-direction: column;
-    gap: 10px;
-    z-index: 2; */
     display: flex;
     flex-direction: column;
     gap: 10px;
     z-index: 2;
     max-height: 80vh;
-    /* Maksimal højde på 80% af viewport */
+
     width: 400px;
-    /* Fast bredde */
+
 
 }
 
@@ -156,19 +145,19 @@
     background-color: #1e293b;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
     max-height: 100%;
-    /* Maksimal højde */
+
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
 }
 
-/* Transaktionsliste som er scrollbar */
+
 .transactions-list {
     width: 100%;
     max-height: 400px;
-    /* Juster efter behov */
+
     overflow-y: auto;
-    /* Scrollbar inde i boksen */
+
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -234,7 +223,12 @@
 }
 
 
-/* Style scrollbaren */
+.History-container h3 {
+    -webkit-text-stroke: 0.5px black; 
+    color: rgb(240, 210, 36)
+}
+
+
 .transactions-list::-webkit-scrollbar {
     width: 8px;
 }

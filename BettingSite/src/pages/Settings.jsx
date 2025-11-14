@@ -1,14 +1,13 @@
 import { useNavigate } from "react-router-dom"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
 import Limit from "../components/Limit"
 import History from "../components/History"
-import '../styles/Settings.css'
+// import '../styles/Settings.css'
+import '../styles/Page.css'
 import '../styles/PopUp.css'
 
 import { useState } from "react"
 
-function SettingsPage() {
+function Settings() {
   const navigate = useNavigate();
   const [limit, setLimit] = useState(false);
   const [history, setHistory] = useState(false);
@@ -28,15 +27,13 @@ function SettingsPage() {
 
 
   function OnLogOutClicked() {
-    navigate("/");
+    localStorage.clear(); 
+    navigate("/login");
   }
 
   return (
     <div className="Settingspage-container">
-      <div >
-        <Header/>
-      </div>
-      <h1>Settings</h1>
+      <h1 id="settingName" >Settings</h1>
       <div className="Settingspage-btns-container">
 
         <button onClick={onLimitClicked}>
@@ -66,11 +63,8 @@ function SettingsPage() {
           Log-out
         </button>
       </div>
-      <div>
-        <Footer/>
-      </div>
     </div>
   )
 }
 
-export default SettingsPage
+export default Settings

@@ -1,5 +1,3 @@
-
-
 // Request interceptor to add access token to every request
 
 export async function requestInterceptor(api){
@@ -40,26 +38,23 @@ export async function responseInterceptor(api){
                 // fetch new access token
                 try {
                     const refresh = localStorage.getItem("refreshToken");
-                     const refresh_token_url = `/Auth/refresh?refreshToken=${refresh}"`
+                     const refresh_token_url = `/Auth/refresh?refreshToken=${refresh}`;
                     const response = await api.post(refresh_token_url);
                     
-                    const {newJwt, newRefreshToken } = response.data.access;
+                    const {jwTtoken, refreshToken} = response.data;
                     
-                    localStorage.setItem("JWT", newJwt); // Update the access token in local storage
-                    localStorage.setItem("refreshToken", newRefreshToken); // Update the refresh token in local storage
-
+                    localStorage.setItem("JWT", jwTtoken); // Update the access token in local storage
+                    localStorage.setItem("refreshToken", refreshToken); // Update the refresh token in local storage
                     
                     // Re-try the original request
                     const originalRequest = error.config;
-                    originalRequest.headers.Authorization = `Bearer ${newJwt}`;
+                    originalRequest.headers.Authorization = `Bearer ${jwTtoken}`;
                     return await api(originalRequest);
                     
                 } catch (refreshError) {
-                    // incase of failed refresh, re-direct to login page
-                    // const navigate = useNavigate(); // If you have React-router-dom
-                    // navigate("/login");
+                    localStorage.clear();
                     
-                    // or window.location.href = "/login" if you do not use react-router-dom
+                    // window.location.href = "/login";
                     
                     return await Promise.reject(refreshError);
                 }

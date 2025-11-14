@@ -1,8 +1,10 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 
-//ændrer logic til at gemme tokens i lokalStorage
+//ændrer logic til at gemme tokens i lokalStorage og slet console.log
 
 const BASEURL = "https://localhost:7203";
+
 
 export const AuthApi = axios.create({
   baseURL: BASEURL,
@@ -16,11 +18,16 @@ export async function login(username, password) {
       password
     });
     //sæt i lokal storage for tokens
+    const {jwTtoken, refreshToken} = response.data;
+
+    localStorage.setItem("JWT", jwTtoken);
+    localStorage.setItem("refreshToken", refreshToken);
+    
     console.log(response.data);
-    return response.data;
+    return true;
   } catch (error) {
     console.error(error.response?.data || error.message);
-    throw error;
+    return false;
   }
 }
 
@@ -32,9 +39,10 @@ export async function register(username, password) {
     });
     //redirct til login
     console.log(response.data);
-    return response.data;
+    return true;
   } catch (error) {
     console.error(error.response?.data || error.message);
-    throw error;
+    return false;
   }
 }
+
