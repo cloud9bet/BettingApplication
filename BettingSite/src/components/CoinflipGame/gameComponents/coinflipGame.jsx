@@ -8,7 +8,7 @@ import Coin from "./coin";
 
 function CoinflipGame() {
   const { totalBalance, setTotalBalance } = useUserInfo();
-  const [anim, setAnim] = useState("");
+  const [anim, setAnim] = useState(""); 
   const [balance, setBalance] = useState(0);
   const [choice, setChoice] = useState("");
   const [bet, setBet] = useState(0);

@@ -44,13 +44,12 @@ export async function GetAllUserDepositAsync() {
 
     } catch (error) {
         console.error(error.message);
-        throw error;
     }
 }
 
 export async function GetAllUserTransactionAsync() {
     try {
-        const response = await Api.get(`/transaction`); // skal ændres  med (User/transaction)
+        const response = await Api.get(`/User/transaction`); // skal ændres  med (User/transaction)
         console.log(response.data);
         return response.data;
 
@@ -64,7 +63,7 @@ export async function GetAllUserTransactionAsync() {
 export async function GetUserPresetsAsync() {
 
     try {
-        const response = await Api.get(`/preset`); // skal ændres  med (User/preset)
+        const response = await Api.get(`/User/preset`); // skal ændres  med (User/preset)
         console.log(response.data);
         return response.data;
 

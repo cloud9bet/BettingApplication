@@ -152,10 +152,10 @@
 }
 
 
-.transactions-list {
+.history-list {
     width: 100%;
     max-height: 400px;
-
+    /* flex-direction: row; */
     overflow-y: auto;
 
     padding: 0 10px;
@@ -164,7 +164,57 @@
 
 .transaction {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: flex-start;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #2b3a54;
+    box-sizing: border-box;
+}
+
+.transaction h2 {
+    width: 140px;
+}
+
+.transaction p {
+    width: 50px;
+    text-align: right; 
+}
+
+.transaction h3 {
+    width: 50px; 
+    text-align: left;
+}
+
+.picker-select {
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 200px;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;         
+
+    
+}
+.picker-select option {
+    font-weight: bold;
+    color: white;
+}
+.picker-select:focus {
+    color: white;
+}
+
+
+.deposit {
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: flex-start;
+    gap: 125px;
     align-items: center;
     width: 100%;
     padding: 12px 0;
@@ -181,7 +231,7 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
-    margin-left: 300px;
+    margin-left: 20px;
     margin-bottom: 10px;
 }
 
@@ -229,20 +279,20 @@
 }
 
 
-.transactions-list::-webkit-scrollbar {
+.history-list::-webkit-scrollbar {
     width: 8px;
 }
 
-.transactions-list::-webkit-scrollbar-track {
+.history-list::-webkit-scrollbar-track {
     background: #2b3a54;
     border-radius: 10px;
 }
 
-.transactions-list::-webkit-scrollbar-thumb {
+.history-list::-webkit-scrollbar-thumb {
     background: #5159ed;
     border-radius: 10px;
 }
 
-.transactions-list::-webkit-scrollbar-thumb:hover {
+.history-list::-webkit-scrollbar-thumb:hover {
     background: #3a42c4;
 }
