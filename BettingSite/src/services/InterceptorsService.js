@@ -31,7 +31,7 @@ export async function responseInterceptor(api){
             // Check if error response is present and error status is 401 or 403
             if (
                 error.response &&
-                (error.response.status === 401 || error.response.status === 403)
+                (error.response.status === 401)
             ) {
                 console.error("Response error :: ", error.response);
                 
