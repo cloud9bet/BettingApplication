@@ -38,8 +38,7 @@ export async function responseInterceptor(api){
                 // fetch new access token
                 try {
                     const refresh = localStorage.getItem("refreshToken");
-                     const refresh_token_url = `/Auth/refresh?refreshToken=${refresh}`;
-                    const response = await api.post(refresh_token_url);
+                    const response = await api.post("/Auth/refresh", null, {params: {refreshToken: refresh}});
                     
                     const {jwTtoken, refreshToken} = response.data;
                     

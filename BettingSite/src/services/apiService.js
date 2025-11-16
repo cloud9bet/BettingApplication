@@ -1,5 +1,5 @@
 import axios from "axios";
-import { requestInterceptor ,responseInterceptor } from "./IntercepotorsService";
+import { requestInterceptor ,responseInterceptor } from "./InterceptorsService";
 
 const BASEURL = "https://localhost:7203";
 
