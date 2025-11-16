@@ -1,21 +1,14 @@
 import { useState, useEffect } from "react";
 import { GetAllUserTransactionAsync, GetAllUserDepositAsync } from "../services/ControllerService/userApi";
 import '../styles/Popup.css'
-
+import { CSVLink } from "react-csv"
 
 function History({ onClose }) {
-    const [TrancationData, setTrancationData] = useState([]);
+    const [TransactionData, setTransactionData] = useState([]);
     const [DepositData, setDepositData] = useState([]);
     const [choice, setChoice] = useState("Transaction");
-    // const transactions = [
-    //     { date: "12-10-2025", amount: +150, name: "slots" },
-    //     { date: "14-10-2025", amount: -150, name: "slots" },
-    //     { date: "14-10-2025", amount: -3350, name: "coinFlip" },
-    //     { date: "14-10-2025", amount: -50, name: "coinFlip" },
-    //     { date: "14-10-2025", amount: -150, name: "coinFlip" },
-    //     { date: "14-10-2025", amount: -250, name: "crash" },
-    //     { date: "14-10-2025", amount: -150, name: "crash" },
-    // ];
+
+
 
     useEffect(() => {
         async function fetchData() {
@@ -25,7 +18,7 @@ function History({ onClose }) {
             if (!transactions) {
                 console.log("Error fetching transactions");
             } else {
-                setTrancationData(transactions);
+                setTransactionData(transactions);
             }
 
             if (!deposits) {
@@ -43,22 +36,56 @@ function History({ onClose }) {
         onClose();
     }
 
+    const TrancationHeaders = [
+        { label: 'Date', key: 'date' },
+        { label: 'Amount', key: 'amount' },
+        { label: 'Game Name', key: 'gameName' }
+    ];
+
+    const TransactionCSV = {
+        filename: 'Transaction_log',
+        headers: TrancationHeaders,
+        data: TransactionData
+
+    };
+
+    const DepositHeaders = [
+        { label: 'Date', key: 'date' },
+        { label: 'Amount', key: 'amount' }
+    ]
+
+
+    const DepositCSV = {
+        filename: 'Deposit_log',
+        headers: DepositHeaders,
+        data: DepositData
+
+    };
+
 
     return (
         <div className="History-container">
-            <div className="History-btn-container">
-                <select className="picker-select" value={choice} onChange={(e) => setChoice(e.target.value)}>
-                    <option>Transaction</option>
-                    <option>Deposit</option>
-                </select>
-                {/* <button className="Export-btn" onClick={HistoryCloseClicked}>Export</button> */}
-                <button className="CloseHistory-btn" onClick={HistoryCloseClicked}>x</button>
+            <div className="History-Button-container">
+                <div className="History-choice-container">
+                    <select className="picker-select" value={choice} onChange={(e) => setChoice(e.target.value)}>
+                        <option>Transaction</option>
+                        <option>Deposit</option>
+                    </select>
+                    <CSVLink
+                        {...(choice === "Transaction" ? TransactionCSV : DepositCSV)}
+                        className="ExportHistory-btn"
+                    >
+                        Export
+                    </CSVLink>
+                    <button className="CloseHistory-btn" onClick={HistoryCloseClicked}>x</button>
+
+                </div>
 
 
             </div>
             {choice === "Transaction" ? (
                 <div className="history-list">
-                    {TrancationData.map((t, index) => (
+                    {TransactionData.map((t, index) => (
                         <div key={index} className="transaction">
                             <h2>{t.date}</h2>
                             <p className={t.amount > 0 ? "positive" : "negative"}>
