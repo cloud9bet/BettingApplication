@@ -43,7 +43,7 @@ function History({ onClose }) {
     ];
 
     const TransactionCSV = {
-        filename: 'Transaction_log',
+        filename: 'Transaction_log.csv',
         headers: TrancationHeaders,
         data: TransactionData
 
@@ -56,7 +56,7 @@ function History({ onClose }) {
 
 
     const DepositCSV = {
-        filename: 'Deposit_log',
+        filename: 'Deposit_log.csv',
         headers: DepositHeaders,
         data: DepositData
 
