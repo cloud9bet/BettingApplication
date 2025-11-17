@@ -53,7 +53,7 @@ export async function responseInterceptor(api){
                 } catch (refreshError) {
                     localStorage.clear();
                     
-                    // window.location.href = "/login";
+                      window.location.href = "/#/login";
                     
                     return await Promise.reject(refreshError);
                 }

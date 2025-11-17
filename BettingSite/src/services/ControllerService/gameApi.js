@@ -1,9 +1,9 @@
 import { Api } from "../apiService";
 //alt logges lige nu men skal ændres til at return stuff når de er testet
 
-async function PlayCoinflip(betAmount, choice) {
+export async function PlayCoinflip(betAmount, choice) {
  try {
-    const response = await AuthApi.post('/Game/coinflip', {
+    const response = await Api.post('/Game/coinflip', {
       betAmount,
       choice
     });
@@ -11,15 +11,15 @@ async function PlayCoinflip(betAmount, choice) {
     return response.data;
   } catch (error) {
     console.error(error.response?.data || error.message);
-    throw error;
+    return false;
   }
 
 }
 
 
-async function playCrash(betAmount, cashOutMultiplier) {
+export async function playCrash(betAmount, cashOutMultiplier) {
  try {
-    const response = await AuthApi.post('/Game/Crash', {
+    const response = await Api.post('/Game/Crash', {
       betAmount,
       cashOutMultiplier
     });
@@ -27,11 +27,11 @@ async function playCrash(betAmount, cashOutMultiplier) {
     return response.data;
   } catch (error) {
     console.error(error.response?.data || error.message);
-    throw error;
+    return false;
   }
 }
 
-async function playSlot(betAmount) {
+export async function playSlot(betAmount) {
     try {
         const response = await Api.post(`/Game/Slotmachine${betAmount}`);
         console.log(response.data);
@@ -39,6 +39,6 @@ async function playSlot(betAmount) {
 
     } catch (error) {
         console.error(error.message);
-        throw error;
+        return false;
     }
 }

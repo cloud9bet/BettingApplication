@@ -5,7 +5,7 @@ import { Api } from "../apiService";
 
 export async function AddDepositAsync(amount) {
     try {
-        const response = await Api.post(`/User/deposit?amount=${amount}`);
+        const response = await Api.post("/User/deposit", null, {params: {amount: amount}});
         console.log(response.data);
         return true;
     } catch (error) {
@@ -16,7 +16,7 @@ export async function AddDepositAsync(amount) {
 
 export async function SetUserDepositLimit(amount) {
     try {
-        const response = await Api.put(`/User/depositlimit?amount=${amount}`);
+        const response = await Api.put("/User/depositlimit", null, {params: {amount: amount}});
         console.log(response.data);
         return true;
     } catch (error) {

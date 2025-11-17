@@ -1,7 +1,7 @@
 .reel.col {
     width: 72px;
     overflow: hidden;
-    background: linear-gradient(#111827, #1f2937); /* deep navy gradient */
+    background: linear-gradient(#111827, #1f2937);
     border: 2px solid #293953;
     border-radius: 10px;
     box-shadow: inset 0 -6px 12px rgba(0,0,0,0.6);

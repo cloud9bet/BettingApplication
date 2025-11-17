@@ -7,7 +7,7 @@ function RofusLogo() {
     const navigate = useNavigate();
   
   function OnRofusLogoClicked() {
-    navigate("/settings"); //navigate til rofus
+   window.location.href = "https://www.rofus.nu/";
   }
 
   return ( 

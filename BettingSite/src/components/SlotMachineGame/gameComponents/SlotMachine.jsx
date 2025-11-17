@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "./Button";
 import { SYMBOLS, PAYLINES, PAYOUTS } from "./constants";
 import { CalculatePayout } from "./CalculatePayout";
@@ -34,6 +34,10 @@ export default function SlotMachine() {
 
     // ResultsRef holder på kolonner
     const resultsRef = useRef(Array(3).fill(null));
+
+    useEffect(()=>{
+
+    },[]);
 
     const startSpin = () => {
         if (spinning) {

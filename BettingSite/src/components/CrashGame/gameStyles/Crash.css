@@ -37,6 +37,8 @@
   padding:8px; 
   font-size: 0.8rem;
   padding: 6px;
+  background-color: white;
+  color: black;
 }
 
 .btn-toggle 

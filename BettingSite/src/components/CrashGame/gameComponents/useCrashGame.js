@@ -17,6 +17,7 @@ export function useCrashGame() {
   const [message, setMessage] = useState("");
   const [data, setData] = useState([{ time: 0, multiplier: 1 }]);
   const timerRef = useRef(null);
+  
   const winSoundRef = useRef(new Audio(winMP3));
   const lossSoundRef = useRef(new Audio(lossMP3));
 

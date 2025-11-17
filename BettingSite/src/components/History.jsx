@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { GetAllUserTransactionAsync, GetAllUserDepositAsync } from "../services/ControllerService/userApi";
-import '../styles/Popup.css'
+import { FaDownload } from "react-icons/fa";
 import { CSVLink } from "react-csv"
+import '../styles/Popup.css'
 
 function History({ onClose }) {
     const [TransactionData, setTransactionData] = useState([]);
@@ -75,14 +76,14 @@ function History({ onClose }) {
                         {...(choice === "Transaction" ? TransactionCSV : DepositCSV)}
                         className="ExportHistory-btn"
                     >
-                        Export
+                        <FaDownload/>
                     </CSVLink>
                     <button className="CloseHistory-btn" onClick={HistoryCloseClicked}>x</button>
 
                 </div>
 
-
-            </div>
+            {/* når choice er transaction */}
+            </div> 
             {choice === "Transaction" ? (
                 <div className="history-list">
                     {TransactionData.map((t, index) => (
@@ -95,9 +96,7 @@ function History({ onClose }) {
                         </div>
                     ))}
                 </div>
-            ) : null}
-
-            {choice === "Deposit" ? (
+            ) : ( //når choice er Deposit
                 <div className="history-list">
                     {DepositData.map((t, index) => (
                         <div key={index} className="deposit">
@@ -108,7 +107,7 @@ function History({ onClose }) {
                         </div>
                     ))}
                 </div>
-            ) : null}
+            )}
         </div>
     )
 }

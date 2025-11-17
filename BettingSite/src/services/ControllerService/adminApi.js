@@ -5,14 +5,13 @@ import { Api } from "../apiService";
 export async function SetUserActiveState(id, status) {
 
     try {
-        const response = await Api.put(`/Admin/activeStatus?id=${id}&status=${status}`);
+        const response = await api.put("/Admin/activeStatus", null, {params: {id: id, status: status}});
         console.log(response.data);
     } catch (error) {
         console.error(error.message);
         throw error;
     }
 }
-
 
 
 export async function GetAllUserInfoAsync() {
@@ -55,7 +54,7 @@ export async function GetAllUserTransactionAsync() {
 
 export async function GetUserTransactionByIdAsync(id) {
     try {
-        const response = await Api.get(`/Admin/transaction${id}`);
+        const response = await Api.get(`/Admin/transaction/${id}`);
         console.log(response.data);
         return response.data;
 
@@ -67,7 +66,7 @@ export async function GetUserTransactionByIdAsync(id) {
 
 export async function GetUserDepositByIdAsync(id) {
     try {
-        const response = await Api.get(`/Admin/deposit${id}`);
+        const response = await Api.get(`/Admin/deposit/${id}`);
         console.log(response.data);
         return response.data;
 

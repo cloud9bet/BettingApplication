@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { FaUserGear } from "react-icons/fa6";
 
 function SettingsBtn() {
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ function SettingsBtn() {
   return ( 
       <div className="setting-btn">
       <button className="btn" onClick={OnStettingClicked}>
-        🌣
+        <FaUserGear />
       </button>
       </div>
   )
