@@ -2,10 +2,11 @@ import { render, fireEvent, act } from "@testing-library/react";
 import Button from "../../src/components/SlotMachineGame/gameComponents/Button";
 import InputNumber from "../../src/components/SlotMachineGame/gameComponents/InputNumber";
 import Reel from "../../src/components/SlotMachineGame/gameComponents/Reel";
+import SlotMachine from "../../src/components/SlotMachineGame/gameComponents/SlotMachine";
 import { describe, it, expect, vi } from "vitest";
 
 
-//TEST AF BUTTON COMPONENT
+// --- TEST AF BUTTON COMPONENT --- //
 describe("Button", ()=>{
     it("renders children",()=>{
         const {getByText}=render(<Button>Spin</Button>);
@@ -25,7 +26,7 @@ describe("Button", ()=>{
      })
 })
 
-//TEST AF INPUTNUMBER COMPONENT
+// --- TEST AF INPUTNUMBER COMPONENT --- //
 describe("InputNumber", ()=>{
     it("renders with intial value",()=>{
         const {getByDisplayValue}=render(<InputNumber value={50} onChange={()=>{}}></InputNumber>);
@@ -50,7 +51,7 @@ describe("InputNumber", ()=>{
 })
 
 
-//TEST AF REEL COMMPONENT
+// --- TEST AF REEL COMMPONENT --- //
 describe("Reel", () => {
   it("renders 3 final symbols when not spinning", () => {
     const { container } = render(
@@ -90,3 +91,53 @@ describe("Reel", () => {
 });
 
 
+// --- TEST AF SLOTMACHINE COMPONENT --- // 
+vi.mock('../../src/Context/BalanceContext', () => {
+    return {
+        useUserBalance: () => ({
+            totalBalance: 1000,
+            setTotalBalance: vi.fn(),
+        }),
+    };
+});
+
+vi.mock("../../src/components/SlotMachineGame/gameComponents/Sounds", () => ({
+  Sound: {
+    playSpin: vi.fn(),
+    playWin: vi.fn(),
+    playFail: vi.fn(),
+  },
+}));
+
+describe("SlotMachine Integration", ()=>{
+
+
+  it("renders balance, bet and spin button",()=>{
+    const {getByText, getByRole} = render (<SlotMachine></SlotMachine>);
+    expect(getByText("Session Balance")).toBeTruthy();
+  })
+
+  it("disables spin button when bet is too high", () => {
+    const { getByText, getByRole } = render(<SlotMachine />);
+    const input = getByRole("textbox");
+    const spin = getByText("Spin");
+
+    fireEvent.change(input, { target: { value: "2000" } });
+
+    expect(spin.disabled).toBe(true);
+  });
+
+
+  it("starts spinning and shows 'Spinning' message", () => {
+  const { getByText, getByRole } = render(<SlotMachine />);
+
+  fireEvent.change(getByRole("textbox"), { target: { value: "20" } });
+
+  const spin = getByText("Spin");   
+  fireEvent.click(spin);
+  
+  expect(getByText("Spinning")).toBeTruthy();
+});
+
+
+})

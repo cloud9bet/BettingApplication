@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Button from "./Button";
 import { SYMBOLS, PAYLINES, PAYOUTS } from "./constants";
 import { CalculatePayout } from "./CalculatePayout";
@@ -7,7 +7,7 @@ import Reel from "./Reel";
 import InputNumber from "./InputNumber";
 import "../gameStyles/SlotMachine.css";
 
-import  {useUserInfo}  from "../../../Context/UserContext";
+import { useUserBalance } from "../../../Context/BalanceContext";
 
 
 function generateFinalGrid() {
@@ -24,7 +24,7 @@ function generateFinalGrid() {
 
 export default function SlotMachine() {
 
-    const { totalBalance, setTotalBalance } = useUserInfo();
+    const { totalBalance, setTotalBalance } = useUserBalance();
 
     const [bet, setBet] = useState(20);
     const [credits, setCredits] = useState(0);
@@ -34,10 +34,6 @@ export default function SlotMachine() {
 
     // ResultsRef holder på kolonner
     const resultsRef = useRef(Array(3).fill(null));
-
-    useEffect(()=>{
-
-    },[]);
 
     const startSpin = () => {
         if (spinning) {
@@ -53,6 +49,7 @@ export default function SlotMachine() {
         setSpinning(true);
         Sound.playSpin();
         setMessage("Spinning");
+        console.log(message);
         //setCredits(c => c - bet);
 
         //setTotalBalance(prev => prev - bet);
@@ -140,8 +137,8 @@ export default function SlotMachine() {
                         <InputNumber
                             value={bet}
                             onChange={val => setBet(val)}
-                            min={1}
-                            max={credits}
+                            //min={1}
+                            //max={totalBalance} // dette bliver tjekket af button lige nedeunder, så det giver ikke mening at have
                             disabled={spinning}
                         />
                     </div>
