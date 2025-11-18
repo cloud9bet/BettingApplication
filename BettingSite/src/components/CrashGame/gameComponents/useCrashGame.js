@@ -1,9 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, use } from "react";
 import {useUserInfo}  from "../../../Context/UserContext";
 import { calculateMultiplier } from "./crashUtils";
 import winMP3 from "../sounds/win.mp3";
 import lossMP3 from "../sounds/explosion.mp3";
-
+import lobbySound from "../sounds/game-music-loop-7-145285.mp3"
+import { playCrash } from "../../../services/ControllerService/gameApi";
 
 export function useCrashGame() {
   const { totalBalance, setTotalBalance } = useUserInfo();
@@ -18,27 +19,63 @@ export function useCrashGame() {
   const [data, setData] = useState([{ time: 0, multiplier: 1 }]);
   const timerRef = useRef(null);
   
-  const winSoundRef = useRef(new Audio(winMP3));
-  const lossSoundRef = useRef(new Audio(lossMP3));
+  const winSoundRef = useRef(null);
+  const lossSoundRef = useRef(null);
+  const lobbySoundRef = useRef(null);
+
+
+  useEffect(() => {
+    lobbySoundRef.current = new Audio(lobbySound);
+    lobbySoundRef.current.volume = 0.3;
+    lobbySoundRef.current.loop = true;
+    lobbySoundRef.current.play();
+
+    winSoundRef.current = new Audio(winMP3);
+    winSoundRef.current.volume = 0.5;
+
+    lossSoundRef.current = new Audio(lossMP3);
+    lossSoundRef.current.volume = 0.5;
+
+    return () => {
+      lobbySoundRef.current.pause();
+      winSoundRef.current.pause();
+      lossSoundRef.current.pause();
+      
+      lobbySoundRef.current = null;
+      winSoundRef.current = null;
+      lossSoundRef.current = null;
+    };
+  }, []);
+
 
 
   const isBetValid = () => {
     return bet > 0 && bet <= totalBalance;
   };
 
-  const startGame = () => {
+  const startGame = async () => {
     if (isPlaying) return;
     if (!isBetValid()) {
       setMessage("Not enough balance to play!");
       return;
     }
 
-    const newCrash = 2.500; // TODO: Fix til korrekt endpoint
+    const crashResult = await playCrash(bet, autoStop);
+
+    if (!crashResult) {
+    setMessage("Error connecting to server!");
+    return;
+    }
+
+    const newCrash = crashResult.crashPoint;
+
     setIsPlaying(true);
     setMultiplier(1);
     setCashedOut(false);
-    setTotalBalance((b) => b - bet);
     setCrashPoint(newCrash);
+
+    setTotalBalance((b) => b - bet);
+
     setData([{ time: 0, multiplier: 1 }]);
     setMessage("The game is on...");
   };
@@ -53,9 +90,10 @@ export function useCrashGame() {
     setBalance((b) => b + payout);
     setTotalBalance((b) => b + payout);
     
+    winSoundRef.current.currentTime = 0;
     winSoundRef.current.play();
     
-    setBalance((b) => b - bet);
+    //setBalance((b) => b - bet);
     setMessage(`You stopped at ${Number(autoStop).toFixed(2)}x and won ${payout}`);
     setIsPlaying(false);
   };
@@ -121,7 +159,9 @@ export function useCrashGame() {
             { time: elapsed + 0.05, multiplier: 0 },
           ]);
 
+          lossSoundRef.current.currentTime = 0;
           lossSoundRef.current.play();
+
           setBalance((b) => b - bet);
           setMessage(`Crash at ${Number(crashPoint).toFixed(2)}x! You lost`);
           setIsPlaying(false);
