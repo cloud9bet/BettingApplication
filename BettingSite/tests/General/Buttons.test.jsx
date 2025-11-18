@@ -15,13 +15,13 @@ beforeEach(() => {
 });
 
 describe("HomeBtn", () => {
-  it("navigates to /home when clicked", () => {
+  it("navigates to / when clicked", () => {
     render(<HomeBtn />);
     const button = screen.getByRole("button");
 
     fireEvent.click(button);
 
-    expect(mockNavigate).toHaveBeenCalledWith("/home");
+    expect(mockNavigate).toHaveBeenCalledWith("/");
     expect(mockNavigate).toHaveBeenCalledTimes(1);
   });
 });

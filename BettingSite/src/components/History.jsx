@@ -75,6 +75,7 @@ function History({ onClose }) {
                     <CSVLink
                         {...(choice === "Transaction" ? TransactionCSV : DepositCSV)}
                         className="ExportHistory-btn"
+                         data-testid="csv-link"
                     >
                         <FaDownload/>
                     </CSVLink>

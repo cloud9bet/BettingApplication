@@ -2,17 +2,15 @@ import { render } from '@testing-library/react'
 import Balance from '../../src/components/Balance'
 import { vi, it, expect, describe } from 'vitest'
 
-vi.mock('../../src/Context/BalanceContext', () => {
-return{
-    usetotalBalance: () => ({
-        totalBalance: 2000,
-        setTotalBalance: vi.fn(),
-    }),
-};
-});
+vi.mock("../../src/Context/UserContext", () => ({
+  useUserInfo: () => ({
+    totalBalance: 2000,
+    setTotalBalance: vi.fn()
+  })
+}));
 
 describe('Balance', () => {
-    it('Should have intial value of 1000', () => {
+    it('Should have intial value of 2000', () => {
         const { getByTestId } = render(<Balance />);
 
         // const balanceValue = Number(getByTestId("balance").textContent);

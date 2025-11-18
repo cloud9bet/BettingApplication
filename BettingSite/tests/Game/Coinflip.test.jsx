@@ -6,14 +6,16 @@ import { vi, it, expect, describe } from 'vitest'
 
 // CoinflipGame
 
-vi.mock('../../src/Context/BalanceContext', () => {
-    return {
-        usetotalBalance: () => ({
-            totalBalance: 1000,
-            setTotalBalance: vi.fn(),
-        }),
-    };
-});
+vi.mock('../../src/Context/UserContext', () => ({
+    useUserInfo: () => ({
+        totalBalance: 1000,
+        setTotalBalance: vi.fn()
+    })
+}));
+
+vi.mock('../../../services/ControllerService/gameApi', () => ({
+    PlayCoinflip: vi.fn().mockResolvedValue({ result: 'heads', payout: 10 })
+}));
 
 describe('CoinflipGame', () => {
 
@@ -67,22 +69,22 @@ describe('CoinflipGame', () => {
         expect(spinBtn.classList.contains('selected')).toBe(false);
     });
 
-it('handles animation end and updates balance', () => {
-  const { getByTestId, getByText, getByRole } = render(<CoinflipGame />);
-  const headBtn = getByText('Head');
-  const betInput = getByRole('textbox');
-  const spinBtn = getByText('Spin');
+    it('handles animation end and updates balance', () => {
+        const { getByTestId, getByText, getByRole } = render(<CoinflipGame />);
+        const headBtn = getByText('Head');
+        const betInput = getByRole('textbox');
+        const spinBtn = getByText('Spin');
 
-  fireEvent.change(betInput, { target: { value: '10' } });
-  fireEvent.click(headBtn);
-  fireEvent.click(spinBtn);
+        fireEvent.change(betInput, { target: { value: '10' } });
+        fireEvent.click(headBtn);
+        fireEvent.click(spinBtn);
 
-  const coin = getByTestId('coin-id'); 
-  fireEvent.animationEnd(coin);
+        const coin = getByTestId('coin-id');
+        fireEvent.animationEnd(coin);
 
-  const balanceLabel = getByTestId('balance-label');
-  expect(balanceLabel.textContent).toMatch(/10\$| -10\$/);
-});
+        const balanceLabel = getByTestId('balance-label');
+        expect(balanceLabel.textContent).toMatch(/10\$| -10\$/);
+    });
 
 });
 
@@ -118,7 +120,7 @@ describe('Coin', () => {
         );
 
         const coinDiv = getByTestId('coin-id');
-       expect(coinDiv.classList.contains('tails-result')).toBe(true);
+        expect(coinDiv.classList.contains('tails-result')).toBe(true);
 
     });
 
