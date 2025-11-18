@@ -5,7 +5,7 @@ import { Api } from "../apiService";
 export async function SetUserActiveState(id, status) {
 
     try {
-        const response = await api.put("/Admin/activeStatus", null, {params: {id: id, status: status}});
+        const response = await Api.put("/Admin/activeStatus", null, {params: {id: id, status: status}});
         console.log(response.data);
     } catch (error) {
         console.error(error.message);

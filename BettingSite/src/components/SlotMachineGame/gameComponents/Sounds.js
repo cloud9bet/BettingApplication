@@ -1,6 +1,7 @@
 import spinSound from "../Sounds/spin.mp3";
 import winSound from "../Sounds/win.mp3";
 import failSound from "../Sounds/fail.mp3"
+import lobbySound from "../Sounds/lobby.mp3";
 
 
 class Sounds {
@@ -8,11 +9,15 @@ class Sounds {
     this.spinSound = new Audio(spinSound);
     this.winSound = new Audio(winSound);
     this.failSound = new Audio(failSound);
+    this.lobbySound = new Audio(lobbySound);
+
 
                 
-        this.spinSound.volume = 0.3;
-        this.winSound.volume = 0.4;
-        this.failSound.volume=0.4;
+        this.spinSound.volume = 0.9;
+        this.winSound.volume = 0.3;
+        this.failSound.volume=0.3;
+        this.lobbySound.volume=0.3;
+
     }
 
     playSpin() {
@@ -28,6 +33,11 @@ class Sounds {
     playFail(){
         this.failSound.currentTime=0;
         this.failSound.play().catch(e => console.log('Fail sound failed'));
+    }
+
+    playLobby(){
+        this.lobbySound.currentTime=0;
+        this.lobbySound.play().catch(e => console.log('Lobby sound failed'));
     }
 }
 

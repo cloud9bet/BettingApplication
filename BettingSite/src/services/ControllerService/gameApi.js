@@ -31,14 +31,15 @@ export async function playCrash(betAmount, cashOutMultiplier) {
   }
 }
 
-export async function playSlot(betAmount) {
-    try {
-        const response = await Api.post(`/Game/Slotmachine${betAmount}`);
-        console.log(response.data);
-        return response.data;
+  export async function playSlot(betAmount) {
+      try {
+          const response = await Api.post("/Game/Slotmachine", null, {params: {betAmount: betAmount}});
 
-    } catch (error) {
-        console.error(error.message);
-        return false;
-    }
-}
+          console.log(response.data);
+          return response.data;
+
+      } catch (error) {
+          console.error(error.message);
+          return false;
+      }
+  }
