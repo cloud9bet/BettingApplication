@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 //ændrer logic til at gemme tokens i lokalStorage og slet console.log
 
-const BASEURL = "https://localhost:7203";
+const BASEURL = "https://cloud9bet.dk";
 
 
 export const AuthApi = axios.create({
