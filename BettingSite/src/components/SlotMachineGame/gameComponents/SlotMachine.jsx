@@ -27,7 +27,7 @@ export default function SlotMachine() {
     const backendPayoutRef = useRef(0);
 
     //Lobby lyd
-    useEffect(() => { 
+    useEffect(() => {
         Sound.lobbySound.loop = true;
         Sound.playLobby();
 
@@ -121,38 +121,43 @@ export default function SlotMachine() {
                             />
                         ))}
                     </div>
-
                     <div className="info">
-                        <div>
-                            <div className="balance-label">Session Balance</div>
-                            <div className={`balance-amount ${credits >= 0 ? "positiv" : "negativ"}`}>
-                                {formatCompactNumber(credits)}$
+                        <div className="info-container">
+                            <div>
+                                <div className="balance-label">Session Balance</div>
+                                <div className={`balance-amount ${credits >= 0 ? "positiv" : "negativ"}`}>
+                                    {formatCompactNumber(credits)}$
+                                </div>
                             </div>
+
+                            <div>
+                                <div className="bet">Bet</div>
+                                <InputNumber
+                                    value={bet}
+                                    disabled={spinning}
+                                    onChange={(val) => {
+                                        const newBet = Number(val);
+                                        if (newBet <= totalBalance) {
+                                            setBet(newBet);
+                                        }
+                                    }}
+                                />
+
+                            </div>
+
+                            <Button
+                                onClick={startSpin}
+                                disabled={spinning || bet <= 0 || bet > totalBalance}
+                            >
+                                Spin
+                            </Button>
                         </div>
 
-                        <div>
-                            <div className="bet">Bet</div>
-                            <InputNumber
-                                value={bet}
-                                disabled={spinning}
-                                onChange={(val) => {
-                                    const newBet = Number(val);
-                                    if (newBet <= totalBalance) {
-                                        setBet(newBet);
-                                    }
-                                }}
-                            />
-
+                        <div className="message-container">
+                            <p className="message">{message}</p>
                         </div>
-
-                        <Button
-                            onClick={startSpin}
-                            disabled={spinning || bet <= 0 || bet > totalBalance}
-                        >
-                            Spin
-                        </Button>
                     </div>
-                    <p className="message">{message}</p>
+
 
                 </div>
                 <p className="slot-rules">

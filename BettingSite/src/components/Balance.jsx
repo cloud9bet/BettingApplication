@@ -10,7 +10,7 @@ function Balance() {
   return (  
     <>
       <div className="BalanceInput">
-        <p data-testid = "balance" >Balance: {formatCompactNumber(totalBalance)} $</p>
+        <p data-testid = "balance" >Balance: {formatCompactNumber(totalBalance)}$</p>
       </div>
     </>
   )

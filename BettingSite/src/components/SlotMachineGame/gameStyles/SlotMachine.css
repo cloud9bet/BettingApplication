@@ -42,6 +42,7 @@
     display: flex;
     flex-wrap: nowrap;
     /* gap: clamp(6px, 1.2vw, 12px); */
+    gap: 5px;
     justify-content: flex-start;
     align-items: flex-start;
     width: 40%;
@@ -54,7 +55,7 @@
 .info {
     order: 2;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     /* gap: clamp(8px, 1.5vw, 16px); */
@@ -64,6 +65,15 @@
     /* margin-top: clamp(-0.8rem, -3vh, 1rem); */
     margin-top: 10px;
     font-weight: bold;
+
+}
+.info-container{
+
+    align-items: center;
+    margin-right: 50px;
+    gap:10px;
+    display: flex;
+    flex-direction: row;
 }
 
 .message {
@@ -79,7 +89,7 @@
     font-weight: bold;
     bottom: 4rem;
     pointer-events: none;
-    margin-left: 50px;
+    /* margin-left: 50px; */
 }
 
 
@@ -118,6 +128,7 @@
 
 
 @media (max-width: 600px){
+
     .slot-game-input-container{
         flex-direction: row;
     }
@@ -125,9 +136,16 @@
         margin-top: 50px;
         width: 50%;
     }
+    .info-container{
+        flex-direction: column;
+        align-items: center;
+        margin-right: 0px;
+    }
     .info{
         flex-direction: column;
-        margin-left: 60px;
+        padding-left: 0%!important;
+        margin-left: 20px;
+
     }
     .bet{
         margin-left: 0px;
@@ -142,10 +160,11 @@
         font-size: 15px;
     }
     .message{
-        margin-top: 53px;
-        margin-left:2px;
         font-size: 8px;
-        width: 10px;
+        width: 102px;
+        margin-right: 10px;
+       
+        /* margin-right: 70px */
     }
 
 
@@ -157,8 +176,9 @@
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 4px;
-    margin-top: 26px;
+    /* margin-top: 26px; */
     padding-top: 12px;
+    font-weight: bold;
     
 }
 
