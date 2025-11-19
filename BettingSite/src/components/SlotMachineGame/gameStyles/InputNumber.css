@@ -20,3 +20,10 @@
     outline: none ;
     box-shadow: none;
 }
+
+
+@media (max-width: 600px){
+    .slot-input{
+        width: 40px;
+    }    
+}

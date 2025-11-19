@@ -27,7 +27,7 @@ export default function SlotMachine() {
     const backendPayoutRef = useRef(0);
 
     //Lobby lyd
-    useEffect(() => {
+    useEffect(() => { 
         Sound.lobbySound.loop = true;
         Sound.playLobby();
 
@@ -103,60 +103,67 @@ export default function SlotMachine() {
 
 
     return (
-    <div className="slot-machine-container">
+        <div className="slot-machine-container">
 
-        <div className="slot-machine big">
-            
+            <div className="slot-machine big">
 
-            <div className="grid">
-                {[0, 1, 2].map(colIndex => (
-                    <Reel
-                        key={colIndex}
-                        index={colIndex}
-                        spinning={spinning}
-                        symbols={SYMBOLS}
-                        finalSymbols={(finalGrid ?? []).map(row => row?.[colIndex] ?? null)}
-                        totalRandom={24}
-                        onStop={stopSpin}
-                    />
-                ))}
-            </div>
-
-            <div className="info">
-                <div>
-                    <div className="balance-label">Session Balance</div>
-                    <div className={`balance-amount ${credits >= 0 ? "positiv" : "negativ"}`}>
-                        {formatCompactNumber(credits)}$
+                <div className="slot-game-input-container">
+                    <div className="grid">
+                        {[0, 1, 2].map(colIndex => (
+                            <Reel
+                                key={colIndex}
+                                index={colIndex}
+                                spinning={spinning}
+                                symbols={SYMBOLS}
+                                finalSymbols={(finalGrid ?? []).map(row => row?.[colIndex] ?? null)}
+                                totalRandom={24}
+                                onStop={stopSpin}
+                            />
+                        ))}
                     </div>
-                </div>
 
-                <div>
-                    <div className="bet">Bet</div>
-                    <InputNumber
-                        value={bet}
-                        onChange={setBet}
-                        disabled={spinning}
-                    />
-                </div>
+                    <div className="info">
+                        <div>
+                            <div className="balance-label">Session Balance</div>
+                            <div className={`balance-amount ${credits >= 0 ? "positiv" : "negativ"}`}>
+                                {formatCompactNumber(credits)}$
+                            </div>
+                        </div>
 
-                <Button
-                    onClick={startSpin}
-                    disabled={spinning || bet <= 0 || bet > totalBalance}
-                >
-                    Spin
-                </Button>
+                        <div>
+                            <div className="bet">Bet</div>
+                            <InputNumber
+                                value={bet}
+                                disabled={spinning}
+                                onChange={(val) => {
+                                    const newBet = Number(val);
+                                    if (newBet <= totalBalance) {
+                                        setBet(newBet);
+                                    }
+                                }}
+                            />
+
+                        </div>
+
+                        <Button
+                            onClick={startSpin}
+                            disabled={spinning || bet <= 0 || bet > totalBalance}
+                        >
+                            Spin
+                        </Button>
+                    </div>
+                    <p className="message">{message}</p>
+
+                </div>
+                <p className="slot-rules">
+                    <i>
+                        <strong>Rules:</strong><br />
+                        Match symbols across the reel. The more symbols match, the higher your win!
+                    </i>
+                </p>
             </div>
-
-            <p className="message">{message}</p>
-            <p className="slot-rules">
-            <i>
-                <strong>Rules:</strong><br />
-                Match symbols across the reel. The more symbols match, the higher your win!
-            </i>
-        </p>
         </div>
-    </div>
-);
+    );
 
 
 }

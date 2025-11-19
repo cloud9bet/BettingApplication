@@ -7,22 +7,19 @@
     width: 90vw;
     max-width: 900px;
     margin: 0 auto;
-    padding-top: 20px;
-    
-    
+    padding-top: 20px;   
 }
 
 /* Selve maskinen – responsiv, ingen fixed højde */
 .slot-machine.big {
     /* position: relative; */
-    border: 2px green solid;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
     max-width: 900px;
-    aspect-ratio: 16 / 7;
+    /* aspect-ratio: 16 / 7; */
     background: #0f172a url("../Images/image1.jpg") center/100% 100% no-repeat;
     border-radius: 16px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
@@ -32,18 +29,25 @@
     text-align: left;
 }
 
+
+.slot-game-input-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 /* REELS øverst */
 .grid {
     order: 1;
     display: flex;
     flex-wrap: nowrap;
-    gap: clamp(6px, 1.2vw, 12px);
+    /* gap: clamp(6px, 1.2vw, 12px); */
     justify-content: flex-start;
     align-items: flex-start;
     width: 40%;
     padding-left: 5%;
-    margin-top: clamp(6px, 1vh, 20px);
-    border: 2px blue solid;
+    /* margin-top: clamp(6px, 1vh, 20px); */
+    margin-top: 10px;
 }
 
 /* INFO under reels */
@@ -60,7 +64,6 @@
     /* margin-top: clamp(-0.8rem, -3vh, 1rem); */
     margin-top: 10px;
     font-weight: bold;
-    border: 2px black solid;
 }
 
 .message {
@@ -70,12 +73,13 @@
     /* margin-left: 5%;
     margin-top: 1rem; */
     margin-top: 10px;
-    font-size: clamp(0.8rem, 1.9vw, 1.1rem);
+    /* font-size: clamp(0.8rem, 1.9vw, 1.1rem); */
+    font-size: 15px;
     color: #f9f9f9;
     font-weight: bold;
     bottom: 4rem;
     pointer-events: none;
-    border: 2px black solid;
+    margin-left: 50px;
 }
 
 
@@ -113,6 +117,41 @@
 /* dine balance/bet styles kan bevares som før */
 
 
+@media (max-width: 600px){
+    .slot-game-input-container{
+        flex-direction: row;
+    }
+    .grid{
+        margin-top: 50px;
+        width: 50%;
+    }
+    .info{
+        flex-direction: column;
+        margin-left: 60px;
+    }
+    .bet{
+        margin-left: 0px;
+        margin-top: 0px !important;
+    }
+    .slot-rules{
+        width: 250px;
+        margin-left: 0% !important;
+        width: 300px;
+    }
+    .slot-rules i{
+        font-size: 15px;
+    }
+    .message{
+        margin-top: 50px;
+        margin-left:10px;
+        font-size: 10px;
+        width: 130px;
+    }
+
+
+}
+
+
 /* === BALANCE OG BET === */
 .balance-label {
     font-weight: 600;
@@ -120,6 +159,7 @@
     margin-bottom: 4px;
     margin-top: 26px;
     padding-top: 12px;
+    
 }
 
 .balance-amount {
@@ -128,7 +168,6 @@
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     /*background-color: #54af40;*/
     border-radius: 10px;
-    border: black solid 2px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
     height: 30px;
     padding: 2px 8px;
@@ -136,6 +175,7 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s ease;
+    
 }
 
 .positiv{
@@ -147,14 +187,13 @@
 }
 
 .bet {
-    font-weight: 600;
-    
+    font-weight: 600px; 
     color: #ffffff;
     margin-bottom: 4px;
     align-items: center;
     margin-top: 14px;
     padding-top: 23px;
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
 }
 
  .slot-rules {
@@ -165,7 +204,7 @@
     font-size: 1rem;
     margin-left: 30%;
 
-    border: 2px black solid;
+
     
 }
 

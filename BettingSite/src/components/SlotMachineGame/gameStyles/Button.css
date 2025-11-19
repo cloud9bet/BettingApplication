@@ -19,3 +19,9 @@
     background-color: #f7c948;
     color:white;
 }
+
+@media (max-width: 600px){
+    .slot-button{
+        margin-top: 2px;
+    }    
+}
