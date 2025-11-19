@@ -19,13 +19,13 @@ function History({ onClose }) {
             if (!transactions) {
                 console.log("Error fetching transactions");
             } else {
-                setTransactionData(transactions);
+                setTransactionData([...transactions].reverse());
             }
 
             if (!deposits) {
                 console.log("Error fetching deposits");
             } else {
-                setDepositData(deposits);
+                setDepositData([...deposits].reverse());
             }
         }
 
