@@ -33,7 +33,7 @@ function Settings() {
 
 
     async function OnDeleteClicked() {
-    if (!window.confirm("Are you sure you want to delete your account?")) return;
+    if (!window.confirm("Are You Sure You Want To Delete Your Account?")) return;
 
     const result = await DeleteUser();
     
@@ -42,7 +42,7 @@ function Settings() {
       navigate("/login");
     }
     else{
-      alert("Account deletion failed");
+      alert("Account Deletion Failed");
     }
   }
   

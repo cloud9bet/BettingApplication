@@ -20,7 +20,7 @@ function DepositInfo({ onClose }) {
       setTotalBalance(prev => Number(prev) + Number(depositInput));
     }
     else {
-      alert("deposit did not go trough");
+      alert("Deposit Did Not Go Through");
     }
   }
 

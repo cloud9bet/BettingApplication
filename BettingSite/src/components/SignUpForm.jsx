@@ -23,7 +23,7 @@ function SignUpForm() {
       if (result) {
         navigate('/login');
       } else {
-        alert("signup failed");
+        alert("Signup Failed");
       }
     }
     else {

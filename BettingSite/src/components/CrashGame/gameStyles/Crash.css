@@ -110,6 +110,7 @@
 
 
 .btn-toggle:hover {
+  background-color: #f7c948;
   filter: brightness(0.7) contrast(1.2);
 
 }

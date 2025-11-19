@@ -23,10 +23,10 @@ function LoginForm() {
       if (role == "User") {
         navigate("/");
       } else {
-        alert("Login failed Due To Access Rights");
+        alert("Login Failed Due To Access Rights");
       }
     } else {
-      alert("Login failed Due To Wrong Credentials");
+      alert("Login Failed Due To Wrong Credentials");
     }
   };
 

@@ -48,7 +48,7 @@ function CoinflipGame() {
   async function Flip(betAmount, betChoice){
     const gameResult = await PlayCoinflip(betAmount, betChoice);
     if(!gameResult){
-      alert("An error occured doing the play");
+      alert("An Error Occured Doing The Game");
       return false;
     }
    
