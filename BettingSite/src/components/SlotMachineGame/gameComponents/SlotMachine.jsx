@@ -4,10 +4,10 @@ import { SYMBOLS } from "./constants";   // only need symbols for reel animation
 import { Sound } from "./Sounds";
 import Reel from "./Reel";
 import InputNumber from "./InputNumber";
-import "../gameStyles/SlotMachine.css";
-
 import { useUserInfo } from "../../../Context/UserContext";
 import { playSlot } from "../../../services/ControllerService/gameApi";
+import { formatCompactNumber } from "../../../utils/MathCompacter";
+import "../gameStyles/SlotMachine.css";
 
 export default function SlotMachine() {
 
@@ -106,6 +106,7 @@ export default function SlotMachine() {
     <div className="slot-machine-container">
 
         <div className="slot-machine big">
+            
 
             <div className="grid">
                 {[0, 1, 2].map(colIndex => (
@@ -125,7 +126,7 @@ export default function SlotMachine() {
                 <div>
                     <div className="balance-label">Session Balance</div>
                     <div className={`balance-amount ${credits >= 0 ? "positiv" : "negativ"}`}>
-                        {credits}$
+                        {formatCompactNumber(credits)}$
                     </div>
                 </div>
 

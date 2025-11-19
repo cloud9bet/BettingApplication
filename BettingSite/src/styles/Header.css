@@ -38,6 +38,16 @@
 }
 
 @media (max-width: 600px) {
+
+.BalanceInput{
+    width:100px !important;
+    height:50px !important;
+    
+}
+.BalanceInput p{
+    margin-top: 15px !important;
+    font-size: 10px !important;
+}
 .header-money-container{
     display: flex;
     flex-direction: column;

@@ -4,8 +4,9 @@ import winSound from "../sounds/level-win-6416.mp3"
 import lossSound from "../sounds/lose-sfx-365579.mp3"
 import lobbySound from "../sounds/game-music-loop-7-145285.mp3"
 import Coin from "./coin";
-import "../gameStyles/mainStyles.css";
 import { PlayCoinflip } from "../../../services/ControllerService/gameApi";
+import { formatCompactNumber } from "../../../utils/MathCompacter";
+import "../gameStyles/mainStyles.css";
 
 function CoinflipGame() {
   const { totalBalance, setTotalBalance } = useUserInfo();
@@ -105,7 +106,7 @@ function CoinflipGame() {
             Session Balance
           </label>
           <label htmlFor="Amount" data-testid="balance-label" id="balance" className={balance >= 0 ? "positiv" : "negativ"}>
-            {balance}$
+            {formatCompactNumber(balance)}$
           </label>
 
           <div className="Coin-btns">
@@ -155,8 +156,7 @@ function CoinflipGame() {
         <i>
           <strong>Rules:</strong><br/>
           Choose <strong>Heads</strong> or <strong>Tails</strong>, place your bet, and press Flip.
-          The coin is tossed, and if it lands on your chosen side, you win bet × 2.
-          If not, you lose the bet.
+          if it lands on your choice you win your bet × 2.
         </i>
       </div>
       </div>

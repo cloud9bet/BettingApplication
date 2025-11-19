@@ -1,17 +1,16 @@
 import {useUserInfo}  from '../Context/UserContext';
-// import '../styles/Balance.css'
+import { formatCompactNumber } from '../utils/MathCompacter';
 import '../styles/Header.css'
-import { useState } from "react";
 
 function Balance() {
   const { totalBalance } = useUserInfo();
 
 
 
-  return (
+  return (  
     <>
       <div className="BalanceInput">
-        <p data-testid = "balance" >Balance: {totalBalance} $</p>
+        <p data-testid = "balance" >Balance: {formatCompactNumber(totalBalance)} $</p>
       </div>
     </>
   )

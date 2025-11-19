@@ -63,8 +63,14 @@ gap: 10px;
 .Settingspage-btns-container button{
 width: 200px;
 height: 50px;;
+}
 
-   
+.limit-btn:hover{
+    background-color:rgb(37, 99, 235);
+}
+
+.history-btn:hover{
+    background-color:rgb(177, 193, 227);
 }
 
 .Settingspage-container h1{
@@ -76,6 +82,13 @@ height: 50px;;
     background-color: tomato;
 }
 
+.delete-btn:hover{
+background-color: rgb(255, 38, 0);
+}
+
 #settingName {
     margin-bottom: 20px;
 }
+
+
+

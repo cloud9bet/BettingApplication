@@ -99,7 +99,7 @@
 }
 
 .btn-toggle {
-  background: rgb(84, 175, 64);
+  background-color: #f7c948;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -110,18 +110,29 @@
 
 
 .btn-toggle:hover {
-  background: rgb(70, 150, 55);
+  filter: brightness(0.7) contrast(1.2);
+
 }
 
 .crash-message {
-  color: #ffd1d1;
+  color: #ffffff;
   text-align: center;
+  font-weight: bold;
+  
 }
 
 .rules {
   font-size: 0.7rem;
   color: #ffffff;
   text-align: center;
+}
+@media (max-width: 600px){
+    .rules{
+      margin-top: 10px;
+      font-size: 10px;
+    }
+
+
 }
 
 .crash-container #session,

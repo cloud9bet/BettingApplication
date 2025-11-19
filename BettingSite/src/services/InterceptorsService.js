@@ -3,7 +3,7 @@
 export async function requestInterceptor(api){
 api.interceptors.request.use(
   (config) => {
-    const accessToken = localStorage.getItem("JWT"); // Get access token from the local storage
+    const accessToken = sessionStorage.getItem("JWT"); // Get access token from the local storage
     
 if (accessToken) { // if access token is present, add it to the bearer-token
       config.headers["Authorization"] = `Bearer ${accessToken}`;
@@ -37,13 +37,13 @@ export async function responseInterceptor(api){
                 
                 // fetch new access token
                 try {
-                    const refresh = localStorage.getItem("refreshToken");
+                    const refresh = sessionStorage.getItem("refreshToken");
                     const response = await api.post("/Auth/refresh", null, {params: {refreshToken: refresh}});
                     
                     const {jwTtoken, refreshToken} = response.data;
                     
-                    localStorage.setItem("JWT", jwTtoken); // Update the access token in local storage
-                    localStorage.setItem("refreshToken", refreshToken); // Update the refresh token in local storage
+                    sessionStorage.setItem("JWT", jwTtoken); // Update the access token in local storage
+                    sessionStorage.setItem("refreshToken", refreshToken); // Update the refresh token in local storage
                     
                     // Re-try the original request
                     const originalRequest = error.config;
@@ -51,9 +51,9 @@ export async function responseInterceptor(api){
                     return await api(originalRequest);
                     
                 } catch (refreshError) {
-                    localStorage.clear();
+                    sessionStorage.clear();
                     
-                      window.location.href = "/#/login";
+                    window.location.hash = "#/login";
                     
                     return await Promise.reject(refreshError);
                 }

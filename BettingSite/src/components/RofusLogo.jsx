@@ -7,7 +7,7 @@ function RofusLogo() {
     const navigate = useNavigate();
   
   function OnRofusLogoClicked() {
-   window.location.href = "https://www.rofus.nu/";
+  window.open("https://www.rofus.nu/", "_blank");
   }
 
   return ( 

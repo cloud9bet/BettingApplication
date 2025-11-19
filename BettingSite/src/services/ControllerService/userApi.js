@@ -29,10 +29,10 @@ export async function DeleteUser() {
     try {
         const response = await Api.delete(`/User/account`);
         console.log(response.data);
-
+        return true;
     } catch (error) {
         console.error(error.message);
-        throw error;
+        return false;
     }
 }
 

@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom"
-import Limit from "../components/Limit"
-import History from "../components/History"
-// import '../styles/Settings.css'
-import '../styles/Page.css'
-import '../styles/PopUp.css'
+import { useNavigate } from "react-router-dom";
+import Limit from "../components/Limit";
+import History from "../components/History";
+import { DeleteUser } from "../services/ControllerService/userApi";
+import '../styles/Page.css';
+import '../styles/PopUp.css';
 
 import { useState } from "react"
 
@@ -27,16 +27,31 @@ function Settings() {
 
 
   function OnLogOutClicked() {
-    localStorage.clear(); 
+    sessionStorage.clear(); 
     navigate("/login");
   }
 
+
+    async function OnDeleteClicked() {
+    if (!window.confirm("Are you sure you want to delete your account?")) return;
+
+    const result = await DeleteUser();
+    
+    if(result){
+      sessionStorage.clear(); 
+      navigate("/login");
+    }
+    else{
+      alert("Account deletion failed");
+    }
+  }
+  
   return (
     <div className="Settingspage-container">
       <h1 id="settingName" >Settings</h1>
       <div className="Settingspage-btns-container">
 
-        <button onClick={onLimitClicked}>
+        <button className="limit-btn" onClick={onLimitClicked}>
           Set Deposit Limit
         </button>
 
@@ -47,7 +62,7 @@ function Settings() {
               <History onClose={onCloseClicked} /> </div>
           </div>)}
 
-        <button onClick={onHistoryClicked}>
+        <button className="history-btn" onClick={onHistoryClicked}>
           History
         </button>
 
@@ -60,7 +75,10 @@ function Settings() {
 
 
         <button className="logout-btn" onClick={OnLogOutClicked}>
-          Log-out
+          Logout
+        </button>
+          <button className="delete-btn" onClick={OnDeleteClicked}>
+          DELETE ACCOUNT
         </button>
       </div>
     </div>

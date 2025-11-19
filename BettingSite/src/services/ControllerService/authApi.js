@@ -20,8 +20,8 @@ export async function login(username, password) {
     //sæt i lokal storage for tokens
     const {jwTtoken, refreshToken} = response.data;
 
-    localStorage.setItem("JWT", jwTtoken);
-    localStorage.setItem("refreshToken", refreshToken);
+    sessionStorage.setItem("JWT", jwTtoken);
+    sessionStorage.setItem("refreshToken", refreshToken);
     
     console.log(response.data);
     return true;
