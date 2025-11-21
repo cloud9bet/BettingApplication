@@ -4,19 +4,18 @@ import { vi, it, expect, describe } from 'vitest'
 
 vi.mock("../../src/Context/UserContext", () => ({
   useUserInfo: () => ({
-    totalBalance: 2000,
+    totalBalance: 0,
     setTotalBalance: vi.fn()
   })
 }));
 
 describe('Balance', () => {
-    it('Should have intial value of 2000', () => {
+    it('Should have intial value of 0', () => {
         const { getByTestId } = render(<Balance />);
 
-        // const balanceValue = Number(getByTestId("balance").textContent);
-        // expect(balanceValue).toEqual(1000);      
+      
         const text = getByTestId("balance").textContent;
-        // const balanceValue = parseInt(text.match(/\d+/)[0]);
-        expect(text).toEqual("Balance: 2000 $"); //ændrer til 0 efter
+      
+        expect(text).toEqual("Balance: 0$"); 
     });
 });

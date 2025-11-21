@@ -1,11 +1,11 @@
-import { render, fireEvent } from '@testing-library/react'
-import CoinflipGame from "../../src/components/CoinflipGame/gameComponents/coinflipGame"
-import Coin from "../../src/components/CoinflipGame/gameComponents/coin"
-import { vi, it, expect, describe } from 'vitest'
+import { render, fireEvent,  waitFor } from '@testing-library/react';
+import CoinflipGame from "../../src/components/CoinflipGame/gameComponents/coinflipGame";
+import Coin from "../../src/components/CoinflipGame/gameComponents/coin";
+import { PlayCoinflip } from '../../src/services/ControllerService/gameApi';
+import { vi, it, expect, describe } from 'vitest';
 
 
 // CoinflipGame
-
 vi.mock('../../src/Context/UserContext', () => ({
     useUserInfo: () => ({
         totalBalance: 1000,
@@ -13,16 +13,15 @@ vi.mock('../../src/Context/UserContext', () => ({
     })
 }));
 
-vi.mock('../../../services/ControllerService/gameApi', () => ({
+vi.mock('../../src/services/ControllerService/gameApi', () => ({
     PlayCoinflip: vi.fn().mockResolvedValue({ result: 'heads', payout: 10 })
 }));
 
 describe('CoinflipGame', () => {
 
     beforeEach(() => {
-        vi.clearAllMocks();
-    });
-
+    PlayCoinflip.mockResolvedValue({ result: 'heads', payout: 10 });
+});
     it('renders initial balances and buttons', () => {
         const { getByText, getByRole } = render(<CoinflipGame />);
         expect(getByText('0$')).toBeTruthy();
@@ -69,28 +68,37 @@ describe('CoinflipGame', () => {
         expect(spinBtn.classList.contains('selected')).toBe(false);
     });
 
-    it('handles animation end and updates balance', () => {
-        const { getByTestId, getByText, getByRole } = render(<CoinflipGame />);
-        const headBtn = getByText('Head');
-        const betInput = getByRole('textbox');
-        const spinBtn = getByText('Spin');
+it('handles animation end and updates balance', async () => {
+    const { getByTestId, getByText, getByRole } = render(<CoinflipGame />);
+    const headBtn = getByText('Head');
+    const betInput = getByRole('textbox');
+    const spinBtn = getByText('Spin');
 
-        fireEvent.change(betInput, { target: { value: '10' } });
-        fireEvent.click(headBtn);
-        fireEvent.click(spinBtn);
+    fireEvent.change(betInput, { target: { value: '10' } });
+    fireEvent.click(headBtn);
+    fireEvent.click(spinBtn);
 
-        const coin = getByTestId('coin-id');
-        fireEvent.animationEnd(coin);
+    const coin = getByTestId('coin-id');
 
+    
+    await waitFor(() => {
+        const payoutSet = coin; 
+        expect(payoutSet).toBeTruthy();
+    });
+
+    fireEvent.animationEnd(coin);
+
+    await waitFor(() => {
         const balanceLabel = getByTestId('balance-label');
         expect(balanceLabel.textContent).toMatch(/10\$| -10\$/);
     });
+});
+
 
 });
 
 
 // Coin
-
 describe('Coin', () => {
 
     it('renders head and tail images', () => {

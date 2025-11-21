@@ -92,28 +92,20 @@ describe("Reel", () => {
 
 
 // --- TEST AF SLOTMACHINE COMPONENT --- // 
-vi.mock('../../src/Context/BalanceContext', () => {
+vi.mock('../../src/Context/UserContext', () => {
     return {
-        useUserBalance: () => ({
+        useUserInfo: () => ({
             totalBalance: 1000,
             setTotalBalance: vi.fn(),
         }),
     };
 });
 
-vi.mock("../../src/components/SlotMachineGame/gameComponents/Sounds", () => ({
-  Sound: {
-    playSpin: vi.fn(),
-    playWin: vi.fn(),
-    playFail: vi.fn(),
-  },
-}));
-
 describe("SlotMachine Integration", ()=>{
 
 
   it("renders balance, bet and spin button",()=>{
-    const {getByText, getByRole} = render (<SlotMachine></SlotMachine>);
+    const {getByText, getByRole} = render (<SlotMachine/>);
     expect(getByText("Session Balance")).toBeTruthy();
   })
 

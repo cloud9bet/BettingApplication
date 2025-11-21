@@ -44,7 +44,7 @@ function LoginForm() {
           <label htmlFor="password">Password</label>
           <input type="password" id="password" data-testid="password" value={password} name="password" placeholder="Enter password" required onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <button type="submit">Log in</button>
+        <button data-testid="submit-btn" type="submit">Log in</button>
 
       </form>
       <p>Don't have an account? <Link className="Login-redirect" to="/signup">Register here</Link></p>

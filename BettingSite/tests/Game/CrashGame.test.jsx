@@ -54,18 +54,6 @@ vi.mock("../../src/components/CrashGame/gameComponents/useCrashGame", () => {
 
 
 
-vi.stubGlobal("Audio", function () {
-    return { play: vi.fn() };
-});
-
-vi.stubGlobal("requestAnimationFrame", (cb) =>
-    setTimeout(() => cb(Date.now()), 10)
-);
-vi.stubGlobal("cancelAnimationFrame", () => { });
-
-
-
-
 describe('CrashGame', () => {
 
     beforeEach(() => {
