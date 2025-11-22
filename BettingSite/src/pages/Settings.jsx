@@ -3,7 +3,7 @@ import Limit from "../components/Limit";
 import History from "../components/History";
 import { DeleteUser } from "../services/ControllerService/userApi";
 import '../styles/Page.css';
-import '../styles/PopUp.css';
+import '../styles/Popup.css';
 
 import { useState } from "react"
 
