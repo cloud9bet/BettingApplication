@@ -24,7 +24,6 @@ let playMock;
    beforeEach(() => {
     PlayCoinflip.mockResolvedValue({ result: 'heads', payout: 10 });
 
-    // Korrekt Audio constructor mock
     playMock = vi.fn();
     global.Audio = class {
       constructor() {
