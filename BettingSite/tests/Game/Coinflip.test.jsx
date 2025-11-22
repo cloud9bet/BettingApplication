@@ -18,11 +18,23 @@ vi.mock('../../src/services/ControllerService/gameApi', () => ({
     PlayCoinflip: vi.fn().mockResolvedValue({ result: 'heads', payout: 10 })
 }));
 
-describe('CoinflipGame', () => {
 
-    beforeEach(() => {
+describe('CoinflipGame', () => {
+let playMock;
+   beforeEach(() => {
     PlayCoinflip.mockResolvedValue({ result: 'heads', payout: 10 });
-});
+
+    // Korrekt Audio constructor mock
+    playMock = vi.fn();
+    global.Audio = class {
+      constructor() {
+        this.play = playMock;
+        this.pause = vi.fn();
+        this.volume = 0;
+        this.loop = false;
+      }
+    };
+  });
     it('renders initial balances and buttons', () => {
         const { getByText, getByRole } = render(<CoinflipGame />);
         expect(getByText('0$')).toBeTruthy();
@@ -95,7 +107,50 @@ it('handles animation end and updates balance', async () => {
     });
 });
 
+ it("plays lobby sound on mount", () => {
+    render(<CoinflipGame />);
+    expect(playMock).toHaveBeenCalledTimes(1); // Lobby sound afspilles på mount
+  });
 
+  it("plays win sound after correct flip", async () => {
+    const { getByRole, getByText, getByTestId } = render(<CoinflipGame />);
+    const headBtn = getByText("Head");
+    const betInput = getByRole("textbox");
+    const spinBtn = getByText("Spin");
+
+    fireEvent.click(headBtn);
+    fireEvent.change(betInput, { target: { value: '10' } });
+    fireEvent.click(spinBtn);
+
+    // Simuler animation end
+    const coinDiv = getByTestId("coin-id");
+    fireEvent.animationEnd(coinDiv);
+
+    await waitFor(() => {
+      expect(playMock).toHaveBeenCalledTimes(2); // Lobby + win
+    });
+  });
+
+  it("plays lose sound after incorrect flip", async () => {
+    PlayCoinflip.mockResolvedValue({ result: 'tails', payout: 10 });
+
+    const { getByRole, getByText, getByTestId } = render(<CoinflipGame />);
+    const headBtn = getByText("Head");
+    const betInput = getByRole("textbox");
+    const spinBtn = getByText("Spin");
+
+    fireEvent.click(headBtn);
+    fireEvent.change(betInput, { target: { value: '10' } });
+    fireEvent.click(spinBtn);
+
+    // Simuler animation end
+    const coinDiv = getByTestId("coin-id");
+    fireEvent.animationEnd(coinDiv);
+
+    await waitFor(() => {
+      expect(playMock).toHaveBeenCalledTimes(2); // Lobby + lose
+    });
+  });
 });
 
 
