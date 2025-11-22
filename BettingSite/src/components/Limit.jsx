@@ -15,9 +15,10 @@ function Limit({ onClose }) {
 
     if (result) {
       setDepositLimit(limit);
+      alert("Deposit Limit Was Set To " + limit + "$");
     }
     else {
-      alert("depositLimit was not set");
+      alert("An Error Occured And Deposit Limit Was Not Set");
     }
   }
 
