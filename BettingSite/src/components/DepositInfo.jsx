@@ -18,7 +18,7 @@ function DepositInfo({ onClose }) {
 
     if (result) {
       setTotalBalance(prev => Number(prev) + Number(depositInput));
-      alert(Number(depositInput) + "$ was deposited");
+      alert(Number(depositInput) + "$ Was Deposited Into Your Account");
     }
     else {
       alert("Deposit Did Not Go Through");
