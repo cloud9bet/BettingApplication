@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../gameStyles/Reel.css";
+import { SYMBOL_COMPONENTS } from "./constants";
 
 export default function Reel({
   index,
   spinning,
   symbols,
-  finalSymbols = ["", "", ""],
+  finalSymbols = ["cherry", "clover", "coin",],
   totalRandom = 30,
   onStop
 }) {
@@ -62,11 +63,14 @@ export default function Reel({
   return (
     <div className="reel col">
       <div className="symbols" style={style}>
-        {reelSymbols.map((symbol, i) => (
-          <div key={i} className="symbol">
-            {symbol}
-          </div>
-        ))}
+        {reelSymbols.map((symbolKey, i) => {
+          const Icon = SYMBOL_COMPONENTS[symbolKey];
+          return (
+            <div key={i} className={`symbol symbol-${symbolKey}`}>
+              {Icon ? <Icon className="icon" /> : symbolKey}
+            </div>
+          );
+        })}
       </div>
     </div>
   );

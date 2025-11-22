@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import Button from "./Button";
-import { SYMBOLS } from "./constants";   // only need symbols for reel animation
+import { SYMBOLS_KEYS, BACKEND_SYMBOL_MAP } from "./constants";
 import { Sound } from "./Sounds";
 import Reel from "./Reel";
 import InputNumber from "./InputNumber";
+
 import { useUserInfo } from "../../../Context/UserContext";
 import { playSlot } from "../../../services/ControllerService/gameApi";
 import { formatCompactNumber } from "../../../utils/MathCompacter";
@@ -18,9 +19,9 @@ export default function SlotMachine() {
     const [spinning, setSpinning] = useState(false);
     const [message, setMessage] = useState("");
     const [finalGrid, setFinalGrid] = useState([
-        ["🍒", "🍀", "🪙"],
-        ["9️⃣", "🍀", "🍀"],
-        ["🪙", "9️⃣", "🍒"]
+        ["diamond", "clover", "coin"],
+        ["nine", "clover", "clover"],
+        ["coin", "nine", "diamond"]
     ]);
 
     const resultsRef = useRef(Array(3).fill(null));
@@ -72,7 +73,11 @@ export default function SlotMachine() {
 
         // Store backend results
         backendPayoutRef.current = gameResult.payout;
-        setFinalGrid(gameResult.finalGrid);
+
+        const mappedGrid = gameResult.finalGrid.map(row =>
+            row.map(sym => BACKEND_SYMBOL_MAP[sym] ?? "diamond")
+        );
+        setFinalGrid(mappedGrid);
 
         // Reset reel results
         resultsRef.current = Array(3).fill(null);
@@ -114,8 +119,8 @@ export default function SlotMachine() {
                                 key={colIndex}
                                 index={colIndex}
                                 spinning={spinning}
-                                symbols={SYMBOLS}
-                                finalSymbols={(finalGrid ?? []).map(row => row?.[colIndex] ?? null)}
+                                symbols={SYMBOLS_KEYS}
+                                finalSymbols={(finalGrid ?? []).map(row => row?.[colIndex] ?? "diamond")}
                                 totalRandom={24}
                                 onStop={stopSpin}
                             />

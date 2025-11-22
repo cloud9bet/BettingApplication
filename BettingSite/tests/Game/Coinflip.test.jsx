@@ -5,6 +5,7 @@ import { PlayCoinflip } from '../../src/services/ControllerService/gameApi';
 import { vi, it, expect, describe } from 'vitest';
 
 
+
 // CoinflipGame
 vi.mock('../../src/Context/UserContext', () => ({
     useUserInfo: () => ({

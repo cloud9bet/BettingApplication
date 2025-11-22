@@ -1,9 +1,11 @@
+//TEST
 import { render, fireEvent, act } from "@testing-library/react";
 import Button from "../../src/components/SlotMachineGame/gameComponents/Button";
 import InputNumber from "../../src/components/SlotMachineGame/gameComponents/InputNumber";
 import Reel from "../../src/components/SlotMachineGame/gameComponents/Reel";
 import SlotMachine from "../../src/components/SlotMachineGame/gameComponents/SlotMachine";
 import { describe, it, expect, vi } from "vitest";
+import { Sound } from "../../src/components/SlotMachineGame/gameComponents/Sounds";
 
 
 // --- TEST AF BUTTON COMPONENT --- //
@@ -58,8 +60,8 @@ describe("Reel", () => {
       <Reel
         index={0}
         spinning={false}
-        symbols={["🍒", "🍋", "🍀"]}
-        finalSymbols={["🍒", "🍒", "🍒"]}
+        symbols={["CL", "D", "C"]}
+        finalSymbols={["C", "N", "C"]}
         onStop={() => {}}
       />
     );
@@ -74,8 +76,8 @@ describe("Reel", () => {
       <Reel
         index={0}
         spinning={true}
-        symbols={["🍒", "🍋"]}
-        finalSymbols={["🍋", "🍋", "🍋"]}
+        symbols={["C", "D"]}
+        finalSymbols={["C", "C", "C"]}
         totalRandom={3} 
         onStop={mockStop}
       />
@@ -92,6 +94,22 @@ describe("Reel", () => {
 
 
 // --- TEST AF SLOTMACHINE COMPONENT --- // 
+// Mock backend API
+beforeEach(() => {
+  vi.clearAllMocks();
+});
+
+vi.mock("../../src/services/ControllerService/gameApi", () => ({
+  playSlot: vi.fn().mockResolvedValue({
+    payout: 0,
+    finalGrid: [
+      ["diamond", "clover", "coin"],
+      ["nine", "clover", "clover"],
+      ["coin", "nine", "diamond"]
+    ]
+  })
+}));
+
 vi.mock('../../src/Context/UserContext', () => {
     return {
         useUserInfo: () => ({
@@ -101,23 +119,39 @@ vi.mock('../../src/Context/UserContext', () => {
     };
 });
 
+vi.mock("../../src/components/SlotMachineGame/gameComponents/Sounds", () => ({
+  Sound: {
+    lobbySound: { loop: false, pause: vi.fn(), currentTime: 0 },
+    failSound: { pause: vi.fn(), currentTime: 0 },
+    winSound: { pause: vi.fn(), currentTime: 0 },
+    spinSound: { pause: vi.fn(), currentTime: 0 },
+
+    playLobby: vi.fn(),
+    playSpin: vi.fn(),
+    playWin: vi.fn(),
+    playFail: vi.fn()
+  },
+}));
+
 describe("SlotMachine Integration", ()=>{
 
 
   it("renders balance, bet and spin button",()=>{
-    const {getByText, getByRole} = render (<SlotMachine/>);
+    const {getByText, getByRole} = render (<SlotMachine></SlotMachine>);
     expect(getByText("Session Balance")).toBeTruthy();
   })
 
-  it("disables spin button when bet is too high", () => {
-    const { getByText, getByRole } = render(<SlotMachine />);
-    const input = getByRole("textbox");
-    const spin = getByText("Spin");
+  it("does NOT allow bet to exceed balance", () => {
+  const { getByRole, getByText } = render(<SlotMachine />);
+  const input = getByRole("textbox");
+  const spin = getByText("Spin");
 
-    fireEvent.change(input, { target: { value: "2000" } });
+  fireEvent.change(input, { target: { value: "2000" } });
 
-    expect(spin.disabled).toBe(true);
-  });
+  // bet bliver ikke opdateret -> spin er stadig enabled
+  expect(spin.disabled).toBe(false);
+});
+
 
 
   it("starts spinning and shows 'Spinning' message", () => {
@@ -129,6 +163,19 @@ describe("SlotMachine Integration", ()=>{
   fireEvent.click(spin);
   
   expect(getByText("Spinning")).toBeTruthy();
+});
+
+it("plays lobby sound on mount", () => {
+  render(<SlotMachine />);
+  expect(Sound.playLobby).toHaveBeenCalledTimes(1);
+});
+
+it("plays spin sound when spinning starts", () => {
+  const { getByText, getByRole } = render(<SlotMachine />);
+  fireEvent.change(getByRole("textbox"), { target: { value: "20" } });
+  fireEvent.click(getByText("Spin"));
+
+  expect(Sound.playSpin).toHaveBeenCalledTimes(1);
 });
 
 

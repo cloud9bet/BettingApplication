@@ -35,3 +35,27 @@
 .symbol.final {
     width: 100%;
 }
+
+.symbol-diamond {
+  color: #00fffb; /* rød */
+}
+
+.symbol-clover {
+  color: #07f43e; /* grøn */
+}
+
+.symbol-nine {
+  color: #ff4de1; /* blå */
+  
+}
+
+.symbol-coin {
+  color: #fbde03; /* guld */
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+}
+
+.symbol-nine   svg { width: 45px; height: 45px; }
