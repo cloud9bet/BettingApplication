@@ -11,7 +11,6 @@ import { formatCompactNumber } from "../../../utils/MathCompacter";
 import "../gameStyles/SlotMachine.css";
 
 export default function SlotMachine() {
-
     const { totalBalance, setTotalBalance } = useUserInfo();
 
     const [bet, setBet] = useState(20);
