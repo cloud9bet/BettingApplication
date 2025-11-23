@@ -34,6 +34,7 @@ let playMock;
       }
     };
   });
+  
     it('renders initial balances and buttons', () => {
         const { getByText, getByRole } = render(<CoinflipGame />);
         expect(getByText('0$')).toBeTruthy();
