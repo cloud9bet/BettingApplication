@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useUserInfo } from "../../../Context/UserContext";
 import winSound from "../sounds/level-win-6416.mp3"
 import lossSound from "../sounds/lose-sfx-365579.mp3"
-import lobbySound from "../sounds/game-music-loop-7-145285.mp3"
+import lobbySound from "../sounds/lobby.mp3"
 import Coin from "./coin";
 import { PlayCoinflip } from "../../../services/ControllerService/gameApi";
 import { formatCompactNumber } from "../../../utils/MathCompacter";
