@@ -3,7 +3,7 @@ import {useUserInfo}  from "../../../Context/UserContext";
 import { calculateMultiplier } from "./crashUtils";
 import winMP3 from "../sounds/win.mp3";
 import lossMP3 from "../sounds/explosion.mp3";
-import lobbySound from "../sounds/game-music-loop-7-145285.mp3"
+import lobbySound from "../sounds/lobby.mp3"
 import { playCrash } from "../../../services/ControllerService/gameApi";
 
 export function useCrashGame() {

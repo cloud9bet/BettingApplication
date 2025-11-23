@@ -14,7 +14,7 @@ class Sounds {
         this.spinSound.volume = 0.9;
         this.winSound.volume = 0.3;
         this.failSound.volume=0.3;
-        this.lobbySound.volume=0.3;
+        this.lobbySound.volume=0.4;
     }
 
     playSpin() {
