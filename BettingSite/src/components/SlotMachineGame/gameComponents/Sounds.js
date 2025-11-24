@@ -12,7 +12,7 @@ class Sounds {
     this.lobbySound = new Audio(lobbySound);
 
         this.spinSound.volume = 0.9;
-        this.winSound.volume = 0.3;
+        this.winSound.volume = 1.0;
         this.failSound.volume=0.3;
         this.lobbySound.volume=0.4;
     }

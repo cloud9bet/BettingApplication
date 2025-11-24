@@ -24,12 +24,12 @@ function CoinflipGame() {
 
   useEffect(() => {
     gameSoundRef.current = new Audio(lobbySound);
-    gameSoundRef.current.volume = 0.3;
+    gameSoundRef.current.volume = 0.2;
     gameSoundRef.current.loop = true;
     gameSoundRef.current.play();
 
     winSoundRef.current = new Audio(winSound);
-    winSoundRef.current.volume = 0.5;
+    winSoundRef.current.volume = 1.0;
 
     loseSoundRef.current = new Audio(lossSound);
     loseSoundRef.current.volume = 0.5;

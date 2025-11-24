@@ -31,7 +31,7 @@ export function useCrashGame() {
     lobbySoundRef.current.play();
 
     winSoundRef.current = new Audio(winMP3);
-    winSoundRef.current.volume = 0.5;
+    winSoundRef.current.volume = 1.0;
 
     lossSoundRef.current = new Audio(lossMP3);
     lossSoundRef.current.volume = 0.5;
