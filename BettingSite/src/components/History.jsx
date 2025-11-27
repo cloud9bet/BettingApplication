@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { GetAllUserTransactionAsync, GetAllUserDepositAsync } from "../services/ControllerService/userApi";
 import { FaDownload } from "react-icons/fa";
-import { CSVLink } from "react-csv"
+import { CSVLink } from "react-csv";
+import { formatCompactNumber } from "../utils/MathCompacter";
 import '../styles/Popup.css'
 
 function History({ onClose }) {
@@ -91,7 +92,7 @@ function History({ onClose }) {
                         <div key={index} className="transaction">
                             <h2>{t.date}</h2>
                             <p className={t.amount > 0 ? "positive" : "negative"}>
-                                {t.amount > 0 ? `+${t.amount}$` : `${t.amount}$`}
+                                {t.amount > 0 ? `+${formatCompactNumber(t.amount)}$` : `${formatCompactNumber(t.amount)}$`}
                             </p>
                             <h3>{t.gameName}</h3>
                         </div>
@@ -103,7 +104,7 @@ function History({ onClose }) {
                         <div key={index} className="deposit">
                             <h2>{t.date}</h2>
                             <p className={t.amount > 0 ? "positive" : "negative"}>
-                                {t.amount > 0 ? `+${t.amount}$` : `${t.amount}$`}
+                                {t.amount > 0 ? `+ ${formatCompactNumber(t.amount)}$` : `${formatCompactNumber(t.amount)}$`}
                             </p>
                         </div>
                     ))}
