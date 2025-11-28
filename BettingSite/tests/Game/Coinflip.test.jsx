@@ -174,6 +174,7 @@ describe('Coin', () => {
 
         expect(coinDiv.classList.contains('coin')).toBe(true);
         expect(coinDiv.classList.contains('spin-heads')).toBe(true);
+        expect(coinDiv.classList.contains('heads-result')).toBe(false);
     });
 
     it('applies result class when animation is not active', () => {
