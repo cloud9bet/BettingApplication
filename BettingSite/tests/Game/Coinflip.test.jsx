@@ -14,11 +14,6 @@ vi.mock('../../src/Context/UserContext', () => ({
     })
 }));
 
-vi.mock('../../src/services/ControllerService/gameApi', () => ({
-    PlayCoinflip: vi.fn().mockResolvedValue({ result: 'heads', payout: 10 })
-}));
-
-
 describe('CoinflipGame', () => {
 let playMock;
    beforeEach(() => {
