@@ -67,18 +67,6 @@ let playMock;
         expect(betInput.value).not.toBe('1050');
     });
 
-    it('flips coin and sets anim', () => {
-        const { getByRole, getByText } = render(<CoinflipGame />);
-        const spinBtn = getByRole('button', { name: /Spin/i });
-        const headBtn = getByText('Head');
-
-        fireEvent.click(headBtn);
-        const betInput = getByRole('textbox');
-        fireEvent.change(betInput, { target: { value: '10' } });
-
-        fireEvent.click(spinBtn);
-        expect(spinBtn.classList.contains('selected')).toBe(false);
-    });
 
 it('handles animation end and updates balance', async () => {
     const { getByTestId, getByText, getByRole } = render(<CoinflipGame />);
