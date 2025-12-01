@@ -54,6 +54,7 @@ export function useCrashGame() {
   const startGame = async () => {
     if (isPlaying) return;
 
+
     const normalizedAutoStop = String(autoStop).replace(",", ".");
     const stopValue = parseFloat(normalizedAutoStop);
 
@@ -67,9 +68,12 @@ export function useCrashGame() {
       return;
     }
 
+    setIsPlaying(true);
+
+
     const crashResult = await playCrash(bet, stopValue);
     if (!crashResult) {
-      setMessage("Error connecting to server!");
+      setMessage("Insufficient balance!");
       return;
     }
 
@@ -77,8 +81,6 @@ export function useCrashGame() {
 
     // INGEN ændringer af balance ved start
     // Session + global balance skal først ændres efter spillet er SLUT
-
-    setIsPlaying(true);
     setCrashPoint(crash);
     setCashedOut(false);
     setMultiplier(1);
