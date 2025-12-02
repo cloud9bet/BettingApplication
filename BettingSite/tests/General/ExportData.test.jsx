@@ -42,7 +42,7 @@ describe("CSVLink Tests", () => {
         expect(gameNames).toContain("Crash");
         expect(gameNames).toContain("Slot");
 
-        // Check mindst én dato
+        // Check mindst en dato
         expect(csvData.some(t => t.date === "2024-01-01")).toBe(true);
     });
 
