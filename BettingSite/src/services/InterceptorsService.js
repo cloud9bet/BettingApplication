@@ -12,7 +12,7 @@ if (accessToken) { // if access token is present, add it to the bearer-token
     return config;
   },
 
-  (error) => { // Error-handling
+  (error) => { 
     console.error("Request error ::", error);
     return Promise.reject(error);
   }
@@ -20,7 +20,7 @@ if (accessToken) { // if access token is present, add it to the bearer-token
 }
 
 
-// Response interceptor to handle 401 and 403 response
+// Response interceptor to handle 401
 export async function responseInterceptor(api){
     api.interceptors.response.use(
         (response) => {
@@ -28,7 +28,7 @@ export async function responseInterceptor(api){
         },
         async (error) => {
             
-            // Check if error response is present and error status is 401 or 403
+            // Check if error response is present and error status is 401 
             if (
                 error.response &&
                 (error.response.status === 401)
@@ -62,3 +62,5 @@ export async function responseInterceptor(api){
         }
     );
 }
+
+//fikser kode kommentar op ordentligt her           
