@@ -52,11 +52,6 @@ export default function SlotMachine() {
     const startSpin = async () => {
         if (spinning) return;
 
-        if (bet <= 0 || bet > totalBalance) {
-            setMessage("You dont got the facilities fam, you need to top up your wallet");
-            return;
-        }
-
         setSpinning(true);
         Sound.playSpin();
         setMessage("Spinning");
