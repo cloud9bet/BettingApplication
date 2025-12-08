@@ -17,7 +17,7 @@
     position: absolute;
     top: 0;
     width: 100%;
-    will-change: transform; /* Forbedrer animation performance */
+    will-change: transform; 
     
 }
 
@@ -37,20 +37,20 @@
 }
 
 .symbol-diamond {
-  color: #00fffb; /* rød */
+  color: #00fffb; 
 }
 
 .symbol-clover {
-  color: #07f43e; /* grøn */
+  color: #07f43e; 
 }
 
 .symbol-nine {
-  color: #ff4de1; /* blå */
+  color: #ff4de1; 
   
 }
 
 .symbol-coin {
-  color: #fbde03; /* guld */
+  color: #fbde03; 
 }
 
 .icon {

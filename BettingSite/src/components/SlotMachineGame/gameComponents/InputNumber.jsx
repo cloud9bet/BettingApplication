@@ -1,6 +1,6 @@
 import React from "react";
 import "../gameStyles/InputNumber.css";
-// ændre max senere
+
 export default function InputNumber({ value, disabled, onChange}) {
     return (
       < input

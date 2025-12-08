@@ -26,7 +26,7 @@ export default function SlotMachine() {
     const resultsRef = useRef(Array(3).fill(null));
     const backendPayoutRef = useRef(0);
 
-    //Lobby lyd
+    
     useEffect(() => {
         Sound.lobbySound.loop = true;
         Sound.playLobby();
@@ -61,7 +61,7 @@ export default function SlotMachine() {
         Sound.playSpin();
         setMessage("Spinning");
 
-        // Fetch backend spin
+        
         const gameResult = await playSlot(bet);
 
         if (!gameResult) {
@@ -70,7 +70,7 @@ export default function SlotMachine() {
             return;
         }
 
-        // Store backend results
+        
         backendPayoutRef.current = gameResult.payout;
 
         const mappedGrid = gameResult.finalGrid.map(row =>
@@ -78,7 +78,7 @@ export default function SlotMachine() {
         );
         setFinalGrid(mappedGrid);
 
-        // Reset reel results
+        
         resultsRef.current = Array(3).fill(null);
     };
 
@@ -90,7 +90,7 @@ export default function SlotMachine() {
 
         const payout = backendPayoutRef.current;
 
-        // update balances (backend has already calculated net result)
+        
         setTotalBalance(prev => prev + payout);
         setCredits(c => c + payout);
 

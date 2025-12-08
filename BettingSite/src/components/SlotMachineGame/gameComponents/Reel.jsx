@@ -41,7 +41,7 @@ export default function Reel({
       });
     });
 
-    // Stop animation efter duration
+    
     const stopTimer = setTimeout(() => {
       setStyle({
         transform: `translateY(-${totalDistance}px)`,
