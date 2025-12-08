@@ -94,7 +94,6 @@ describe("Reel", () => {
 
 
 // --- TEST AF SLOTMACHINE COMPONENT --- // 
-// Mock backend API
 beforeEach(() => {
   vi.clearAllMocks();
 });
