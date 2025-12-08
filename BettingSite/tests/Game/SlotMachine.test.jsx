@@ -148,7 +148,6 @@ describe("SlotMachine Integration", ()=>{
 
   fireEvent.change(input, { target: { value: "2000" } });
 
-  // bet bliver ikke opdateret -> spin er stadig enabled
   expect(spin.disabled).toBe(false);
 });
 
