@@ -9,7 +9,7 @@ import { SiBitcoinsv } from "react-icons/si";
     C = COIN
 */
 
-// Available symbols
+
 export const SYMBOLS_KEYS = ["diamond", "clover", "nine", "coin"];
 
 
