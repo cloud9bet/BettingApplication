@@ -6,7 +6,7 @@ import lossMP3 from "../sounds/explosion.mp3";
 import lobbySound from "../sounds/lobby.mp3";
 import { playCrash } from "../../../services/ControllerService/gameApi";
 
-export function useCrashGame() {
+export function useCrashGame() { //Init
   const { totalBalance, setTotalBalance } = useUserInfo();
 
   const [balance, setBalance] = useState(0); // session-balance
@@ -23,10 +23,8 @@ export function useCrashGame() {
   const lossSoundRef = useRef(null);
   const lobbySoundRef = useRef(null);
 
-  // -----------------------
-  //  AUDIO SETUP
-  // -----------------------
-  useEffect(() => {
+
+  useEffect(() => { //Lyde
     lobbySoundRef.current = new Audio(lobbySound);
     lobbySoundRef.current.volume = 0.3;
     lobbySoundRef.current.loop = true;
@@ -48,9 +46,7 @@ export function useCrashGame() {
 
   const isBetValid = () => bet > 0 && bet <= totalBalance;
 
-  // -----------------------
-  //  START GAME
-  // -----------------------
+
   const startGame = async () => {
     if (isPlaying) return;
 
@@ -79,8 +75,6 @@ export function useCrashGame() {
 
     const crash = crashResult.crashPoint;
 
-    // INGEN ændringer af balance ved start
-    // Session + global balance skal først ændres efter spillet er SLUT
     setCrashPoint(crash);
     setCashedOut(false);
     setMultiplier(1);
@@ -89,9 +83,7 @@ export function useCrashGame() {
     setMessage("The game is on...");
   };
 
-  // -----------------------
-  //  STOP GAME (WIN)
-  // -----------------------
+
   const stopGame = () => {
     if (!isPlaying || cashedOut) return;
 
@@ -102,7 +94,7 @@ export function useCrashGame() {
 
     setCashedOut(true);
 
-    //GIVE WINNINGS HERE
+    // Opdater balance ved sejr
     setBalance((b) => b + payout);
     setTotalBalance((b) => b + payout);
 
@@ -113,9 +105,7 @@ export function useCrashGame() {
     setIsPlaying(false);
   };
 
-  // -----------------------
-  //  INPUT HANDLERS
-  // -----------------------
+
   const handleBetChange = (newBet) => {
     if (newBet <= totalBalance) setBet(newBet);
   };
@@ -128,9 +118,7 @@ export function useCrashGame() {
     isPlaying ? stopGame() : startGame();
   };
 
-  // -----------------------
-  //  GAME LOOP (ANIMATION)
-  // -----------------------
+
   useEffect(() => {
     if (!isPlaying || crashPoint == null) return;
 
@@ -152,14 +140,14 @@ export function useCrashGame() {
 
       const stopValue = parseFloat(String(autoStop).replace(",", "."));
 
-      // AUTOSTOP WIN
+      // VIND
       if (!isNaN(stopValue) && newMult >= stopValue && !cashedOut) {
         stopGame();
         cancelAnimationFrame(frameId);
         return;
       }
 
-      // CRASH / LOSE
+      // TAB
       if (newMult >= crashPoint) {
         cancelAnimationFrame(frameId);
 
@@ -173,7 +161,7 @@ export function useCrashGame() {
           lossSoundRef.current.currentTime = 0;
           lossSoundRef.current.play();
 
-          //SUBTRACT BET ONLY ON LOSS
+          // Opdater balance begge balances  
           setBalance((b) => b - bet);
           setTotalBalance((b) => b - bet);
 
@@ -200,9 +188,6 @@ export function useCrashGame() {
     message,
     data,
     totalBalance,
-
-    startGame,
-    stopGame,
     handleBetChange,
     handleAutoStopChange,
     handleToggle,

@@ -1,5 +1,4 @@
 import "../gameStyles/Crash.css";
-import React from "react";
 import { useCrashGame } from "./useCrashGame";
 import CrashStats from "./CrashStats";
 import CrashControls from "./CrashControls";
@@ -7,6 +6,7 @@ import CrashChart from "./CrashChart";
 import CrashMessage from "./CrashMessage";
 import CrashRules from "./CrashRules";
 
+// Hele "controlleren" i spiller
 
 function GamblingCrash() {
   const {
@@ -18,8 +18,6 @@ function GamblingCrash() {
     cashedOut,
     message,
     data,
-    startGame,
-    stopGame,
     handleBetChange,
     handleAutoStopChange,
     handleToggle,

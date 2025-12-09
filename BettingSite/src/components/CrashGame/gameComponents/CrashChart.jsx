@@ -1,4 +1,3 @@
-import React from "react";
 import {
   LineChart,
   Line,
@@ -9,7 +8,9 @@ import {
 } from "recharts";
 
 
-function CrashChart({ data }) {
+// Komponent til grafen 
+
+function CrashChart({ data }) { 
   return (
     <div className="crash-graph">
       <ResponsiveContainer width="100%" height="100%">

@@ -1,4 +1,5 @@
-import React from "react";
+
+// Komponent til regelsæt
 
 function CrashRules() {
   return (

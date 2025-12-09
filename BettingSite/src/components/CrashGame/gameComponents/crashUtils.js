@@ -1,4 +1,6 @@
 
+// Hjælpefunktioner
+
 
 export function calculateMultiplier(elapsed, growthRate = 0.3) {
   return Math.exp(growthRate * elapsed);

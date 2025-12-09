@@ -1,9 +1,10 @@
-import React from "react";
 import { formatMultiplier } from "./crashUtils";
 import { formatCompactNumber } from "../../../utils/MathCompacter";
 
+// Komponent til statistikker
 
-function CrashStats({ balance, multiplier }) {
+function CrashStats({ balance, multiplier }) 
+{
   return (
     <div className="crash-stats">
       <label htmlFor="Session Balance" id="session">
@@ -14,7 +15,7 @@ function CrashStats({ balance, multiplier }) {
         id="balance"
         className={balance >= 0 ? "positiv" : "negativ"}
       >
-        {formatCompactNumber(balance)}$
+        {formatCompactNumber(balance)}$ 
       </label>
       <div className="stat-card">
         <div className="stat-label">Multiplier</div>

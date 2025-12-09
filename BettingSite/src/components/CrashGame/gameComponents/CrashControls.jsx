@@ -1,21 +1,20 @@
-import React from "react";
 
+// Komponent til diverse knapper
 
 function CrashControls({ 
   bet,
   autoStop, 
-  isPlaying, 
-  cashedOut, 
+  isPlaying,  
   onBetChange,
   onAutoStopChange, 
   onToggle 
 }) {
-  const handleBetInput = (e) => {
+  const handleBetInput = (e) => { // Handler til betinput
     const newBet = Number(e.target.value);
     onBetChange(newBet);
   };
 
-    const handleAutoStopInput = (e) => {
+    const handleAutoStopInput = (e) => { // Handler til Autostopinput
     const newAutoStop = e.target.value;
     if (newAutoStop === "" || /^\d*\.?\d*$/.test(newAutoStop))
     {
