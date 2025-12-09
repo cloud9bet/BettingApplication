@@ -14,12 +14,10 @@
     width: 90vw;
     max-width: 750px;
     height: 350px;
-    /* background-color: blueviolet; */
     background-image: url("../images/CoinFlipGameBackground.png");
     background-size: 750px 350px;
     background-position: center;
     border-radius: 30px;
-    /* border: black solid 2px; */
     align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
 
@@ -36,9 +34,7 @@
     flex: 2;
     width: 200px;
     height: 350px;
-    /* background-color: rgb(155, 131, 176); */
     border-radius: 30px;
-    /* border: black solid 2px; */
     align-items: center;
     margin-top: 10px;
     justify-content: center;
@@ -89,7 +85,6 @@
 .Coin-btns {
   display: flex;
   flex-direction: row;
-  /* border: 2px solid red; Tilføj border-style og border-width */
   width: 250px;
   height: 100px;
   gap: 10px; 
@@ -102,7 +97,7 @@
   border: none;
   border-radius: 5px;
   font-weight: bold;
-  height: 40px; /* Juster højden */
+  height: 40px;
   width: 75px;
   font-size: 15px;
 }
@@ -139,7 +134,6 @@
 
     flex: 5;
     border-radius: 30px;
-    /* border: black solid 2px; */
     align-items: center;
     width: 200px;
     height: 200px;

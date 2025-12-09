@@ -1,8 +1,4 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom"
-
-//ændrer logic til at gemme tokens i lokalStorage og slet console.log
-
 const BASEURL = "https://cloud9bet.dk";
 
 
@@ -17,7 +13,7 @@ export async function login(username, password) {
       username,
       password
     });
-    //sæt i lokal storage for tokens
+
     const {jwTtoken, refreshToken} = response.data;
 
     sessionStorage.setItem("JWT", jwTtoken);
@@ -37,7 +33,6 @@ export async function register(username, password) {
       username,
       password
     });
-    //redirct til login
     console.log(response.data);
     return true;
   } catch (error) {

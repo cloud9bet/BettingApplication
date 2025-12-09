@@ -1,4 +1,3 @@
-import { useState } from "react";
 import headImg from "../images/heads_monopoly.png";
 import tailImg from "../images/tails_monopoly.png";
 import '../gameStyles/coin.css';

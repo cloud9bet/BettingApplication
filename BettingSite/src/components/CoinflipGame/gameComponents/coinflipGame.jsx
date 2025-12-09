@@ -58,7 +58,7 @@ function CoinflipGame() {
 
 
   async function flipCoin() {
-    if (anim || !choice || bet <= 0 || bet > totalBalance) return; // forhindrer ugyldige spins
+    if (anim || !choice || bet <= 0 || bet > totalBalance) return;
   
     const game = await Flip(bet, choice);
 
@@ -73,7 +73,6 @@ function CoinflipGame() {
   const handleAnimationEnd = () => {
     setAnim("");
 
-    // først her — når animationen er færdig — opdaterer vi balancen
     if (
       (choice === "heads" && flipResult) ||
       (choice === "tails" && !flipResult)

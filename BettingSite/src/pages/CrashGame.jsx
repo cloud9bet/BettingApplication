@@ -4,7 +4,7 @@ import {useUserInfo}   from '../Context/UserContext';
 import '../styles/Page.css'
 
 function Crash() {
-    const {activeStatus} = useUserInfo(); //test  
+    const {activeStatus} = useUserInfo();
 
   return (
       activeStatus? <div className="CrashGamePage-game">

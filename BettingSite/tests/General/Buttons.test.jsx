@@ -11,7 +11,7 @@ vi.mock("react-router-dom", () => ({
 }));
 
 beforeEach(() => {
-  mockNavigate.mockClear(); // reset between tests
+  mockNavigate.mockClear();
 });
 
 describe("HomeBtn", () => {

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import DepositInfo from "./DepositInfo";
-// import "../styles/Deposit.css";
 import "../styles/Popup.css";
 import "../styles/Header.css";
 

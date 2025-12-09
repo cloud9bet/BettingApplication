@@ -15,7 +15,6 @@
     gap: 10px;
     margin-top: 30px;
     margin-right: 20px;
-    /* flex-wrap: wrap; */
 }
 
 .header-balance{
@@ -27,13 +26,11 @@
 .header-deposit {
     margin-top: 29px;
     width: 200px;
-    /* border: #0062ff solid 2px; */
 }
 
 .header-money-container{
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
     gap: 20px;
 }
 
@@ -53,7 +50,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* border: #0062ff solid 2px;    */
     gap: 10px;
 }
 
@@ -65,18 +61,13 @@
 .header-deposit {
     margin:auto;
     width: auto;
-    /* border: #0062ff solid 2px;    */
     }
 
 }
 
 
-/* For Deposit Info*/
 .Deposit-container {
     display: flex;
-    /* flex-direction: row; */
-
-    /*Nyt logik*/
     flex-direction: column;
     width: 100%;
     align-items: center;
@@ -115,21 +106,14 @@
 
 .Settingspage-limit-popup {
     display: flex;
-    /* flex-direction: row; */
-    /*Nyt logik*/
     flex-direction: column;
     gap: 10px;
     z-index: 2;
 
 }
 
-
-/* For Deposit Info*/
 .Limit-container {
     display: flex;
-    /* flex-direction: row; */
-
-    /*Nyt logik*/
     flex-direction: column;
     width: 100%;
     margin-top: 150px;
@@ -178,20 +162,12 @@
 
 
 .Settingspage-history-popup {
-    /* display: flex;
-
-    flex-direction: column;
-    gap: 10px;
-    z-index: 2; */
     display: flex;
     flex-direction: column;
     gap: 10px;
     z-index: 2;
     max-height: 80vh;
-    /* Maksimal højde på 80% af viewport */
     width: 400px;
-    /* Fast bredde */
-
 }
 
 .History-container {
@@ -206,19 +182,15 @@
     background-color: #1e293b;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
     max-height: 100%;
-    /* Maksimal højde */
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
 }
 
-/* Transaktionsliste som er scrollbar */
 .transactions-list {
     width: 100%;
     max-height: 400px;
-    /* Juster efter behov */
     overflow-y: auto;
-    /* Scrollbar inde i boksen */
     padding: 0 10px;
     box-sizing: border-box;
 }
@@ -263,20 +235,17 @@
 
 .CloseHistory-btn:hover {
     background-color: tomato;
-
     filter: brightness(0.7) contrast(1.2);
 }
 
 .positive {
     color: lightgreen;
     font-weight: bold;
-
 }
 
 .negative {
     color: tomato;
     font-weight: bold;
-
 }
 
 .History-container h2 {
@@ -284,7 +253,7 @@
 }
 
 
-/* Style scrollbaren */
+
 .transactions-list::-webkit-scrollbar {
     width: 8px;
 }
@@ -304,8 +273,6 @@
 }
 
 
-
-/******Deposit*******/
 .DepositPress {
     display: flex;
     flex-direction: column;
@@ -334,8 +301,6 @@
 }
 
 
-
-/********Balance********/
 .BalanceInput {
   border: 2px solid transparent;     
   font-weight: bold;

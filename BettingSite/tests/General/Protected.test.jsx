@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import ProtectedRoutes from '../../src/utils/Protected';
 
-// Mock react-router-dom
+
 vi.mock('react-router-dom', () => ({
   Outlet: () => <div>Outlet rendered</div>,
   Navigate: ({ to }) => <div>Navigate to {to}</div>,

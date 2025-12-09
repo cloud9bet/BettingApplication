@@ -84,7 +84,6 @@ function History({ onClose }) {
 
                 </div>
 
-            {/* når choice er transaction */}
             </div> 
             {choice === "Transaction" ? (
                 <div className="history-list">
@@ -98,7 +97,7 @@ function History({ onClose }) {
                         </div>
                     ))}
                 </div>
-            ) : ( //når choice er Deposit
+            ) : ( 
                 <div className="history-list">
                     {DepositData.map((t, index) => (
                         <div key={index} className="deposit">

@@ -31,7 +31,6 @@ function SignUpForm() {
     }
   };
 
-  // vi skal huske at tilføje krav til password
   return (
     <div className="SignUp-container">
       <h2>Sign-Up</h2>

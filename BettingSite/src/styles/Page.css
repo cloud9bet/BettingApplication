@@ -3,12 +3,11 @@
     min-height: 100vh;
     display: flex;       
     flex-direction: column;
-    /* overflow: hidden;   */
+
     justify-content: space-between;
     box-sizing: border-box;
 }
 
-/**********GamePage***********/
 .Homepage-games{
     display: flex;
     flex-direction: row;
@@ -17,7 +16,6 @@
     gap: 5px;
 }
 
-/* gør all iconer fylder 30% af den skærm de befinder sig på men aldrig mere end 200px og sørger for billederne ikke stretcher */
 .Homepage-games > * {
   width: 30vw;
   max-width: 200px;
@@ -33,7 +31,6 @@
     }
 }
 
-/**********Coinflip***********/
 .CoinFlipGamePage-game{
     display: flex;
     flex-direction: row;
@@ -51,7 +48,6 @@
 }
 
 
-/**********Setting***********/
 .Settingspage-btns-container{
  display: flex;
  flex-direction: column; 

@@ -13,7 +13,7 @@ vi.mock("jwt-decode");
 vi.mock("react-router-dom", async () => {   
   const actual = await vi.importActual("react-router-dom");
   return {
-    ...actual, //only overwrite useNavigate
+    ...actual,
     useNavigate: vi.fn(),
   };
 });

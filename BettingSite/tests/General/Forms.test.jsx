@@ -5,7 +5,6 @@ import { MemoryRouter } from 'react-router-dom'
 import { vi, it, expect, describe } from 'vitest'
 
 
-//LOGIN FORM
 describe('LoginForm', () => {
     it('username should have inital value "" ', () => {
         const { getByTestId } = render(
@@ -53,7 +52,6 @@ describe('LoginForm', () => {
 
 });
 
-//SIGNUP FORM
 describe('SignUpForm', () => {
     it('username should have inital value "" ', () => {
         const { getByTestId } = render(

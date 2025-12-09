@@ -1,8 +1,5 @@
 import { Api } from "../apiService";
 
-//alt logges lige nu men skal ændres til at return stuff når de er testet
-
-
 export async function AddDepositAsync(amount) {
     try {
         const response = await Api.post("/User/deposit", null, {params: {amount: amount}});
@@ -49,7 +46,7 @@ export async function GetAllUserDepositAsync() {
 
 export async function GetAllUserTransactionAsync() {
     try {
-        const response = await Api.get(`/User/transaction`); // skal ændres  med (User/transaction)
+        const response = await Api.get(`/User/transaction`);
         console.log(response.data);
         return response.data;
 
@@ -63,7 +60,7 @@ export async function GetAllUserTransactionAsync() {
 export async function GetUserPresetsAsync() {
 
     try {
-        const response = await Api.get(`/User/preset`); // skal ændres  med (User/preset)
+        const response = await Api.get(`/User/preset`);
         console.log(response.data);
         return response.data;
 

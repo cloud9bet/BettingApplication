@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import { FaHome } from "react-icons/fa";
-import header from "./Header"
 
 function HomeBtn() {
     const navigate = useNavigate();

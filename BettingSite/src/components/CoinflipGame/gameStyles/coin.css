@@ -58,7 +58,7 @@
     }
 }
 
-/* Når mønten viser heads efter animation */
+
 .coin.heads-result .heads {
   transform: rotateX(0deg);
   opacity: 1;
@@ -69,7 +69,6 @@
   opacity: 0;
 }
 
-/* Når mønten viser tails efter animation */
 .coin.tails-result .heads {
   transform: rotateX(0deg);
   opacity: 0;

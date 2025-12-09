@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useUserInfo } from '../Context/UserContext';
 import { AddDepositAsync } from "../services/ControllerService/userApi";
-// import '../styles/Deposit.css' 
 import '../styles/Popup.css'
 import '../styles/Header.css'
 
